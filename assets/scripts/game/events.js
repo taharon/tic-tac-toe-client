@@ -25,6 +25,7 @@
       api.createGame()
          .then(logic.setUp)
          .catch(ui.onSetUpFail)
+      console.log(player.boardState, player.winner, player.gameId)
    }
 
 module.exports = {
