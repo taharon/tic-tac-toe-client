@@ -30,4 +30,8 @@ $(() => {
    $('#sign-in').on('submit', userCreate.onSignIn)
    $('#change-pw').on('submit', userCreate.onChangePw)
    $('#sign-out').on('submit', userCreate.onSignOut)
+
+   const gamePlay = require('./game/events.js')
+   $('#new-game').on('submit', gamePlay.newGame)
+   $('.game-box').on('click', gamePlay.boxClicked)
 })
