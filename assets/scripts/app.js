@@ -22,6 +22,8 @@ if (store.user){
    $('change-pw').removeAttr('hidden')
    $('sign-out').removeAttr('hidden')
 }
+
+//when jquery loads
 $(() => {
 //importing authorization events
    const userCreate = require('./auth/events.js')
@@ -33,5 +35,13 @@ $(() => {
 
    const gamePlay = require('./game/events.js')
    $('#new-game').on('submit', gamePlay.newGame)
-   $('.game-box').on('click', gamePlay.boxClicked)
+   $('.container').on('click', gamePlay.newGame)
 })
+
+const gameBox = () => {
+   const gamePlay = require('./game/events.js')
+   $('.game-box').on('click', gamePlay.boxClicked)
+}
+module.exports = {
+   gameBox
+}
