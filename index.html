@@ -12,6 +12,36 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tic-Tac-Toe</h1>
+      <h2 id='message'></h2>
+      <form id='sign-up'>
+         <fieldset form='sign-up'>
+            <legend>Create an account</legend>
+            <input type='text' name='credentials[email]' placeholder='Example@domain.com'></input>
+            <input type='password' name='credentials[password]' placeholder='Enter a password'></input>
+            <input type='password' name='credentials[password_confirmation]' placeholder='Enter password again'></input>
+            <input type='submit' value="Sign Up"></input> 
+         </fieldset>
+      </form>
+      <form id='sign-in'>
+         <fieldset form='sign-in'>
+            <legend>Log in to an account</legend>
+            <input type='text' name='credentials[email]' placeholder='Example@domain.com'></input>
+            <input type='password' name='credentials[password]' placeholder='Enter a password'></input>
+            <input type='submit' value="Log In"></input> 
+         </fieldset>
+      </form>
+      <form id='change-pw'>
+         <fieldset form='change-pw'>
+            <legend>Change your password</legend>
+            <input class='change' type='password' name='passwords[old]' placeholder='Old Password'></input>
+            <input class='change' type='password' name='passwords[new]]' placeholder='New Password'></input>
+            <input type='submit' value="Change Your Password"></input> 
+         </fieldset>
+      </form>
+      <form id='sign-out'>
+         <fieldset form='sign-out'>
+         <input type='submit' value="Sign Out"></input>
+      </form>
     </body>
 </html>
