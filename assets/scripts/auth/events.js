@@ -12,38 +12,44 @@
          $('#message').text('Password does not match password confirmation!')
          $('#message').removeClass()
          $('#message').addClass('failure')
-//resetting the page on any button click
+//resetting the forms on any button click
          $('html form').trigger('reset')
          return
       }
       api.signUp(data)
          .then(ui.onSignUpSuccess)
          .catch(ui.onSignUpFail)
-//resetting the page on any button click
+//resetting the forms on any button click
       $('html form').trigger('reset')
    }
    
+//sign in function
    const onSignIn = function (event) {
       event.preventDefault()
       api.signIn(getFormFields(event.target))
          .then(ui.onSignInSuccess)
          .catch(ui.onSignInFail)
+//resetting the forms on any button click
       $('html form').trigger('reset')
    }
    
+//change password function
    const onChangePw = function (event) {
       event.preventDefault()
       api.changePw(getFormFields(event.target))
          .then(ui.onChangePwSuccess)
          .catch(ui.onChangePwFail)
+//resetting the forms on any button click
       $('html form').trigger('reset')
    }
 
+//sign out function
    const onSignOut = function (event) {
       event.preventDefault()
       api.signOut()
          .then(ui.onSignOutSuccess)
          .catch(ui.onSignOutFail)
+//resetting the forms on any button click
       $('html form').trigger('reset')
    }
 module.exports = {

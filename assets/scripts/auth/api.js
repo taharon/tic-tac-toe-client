@@ -1,6 +1,7 @@
 'use strict'
 const url = require('../config.js')
 const store = require('../store.js')
+//HTTP requests for user authentication
 const signUp = (userData) => {
    return $.ajax(
    {

@@ -1,4 +1,5 @@
 'use strict'
+//removeAttr('hidden') and attr('hidden','hidden') are used in this page to show or hide html elements depending on a user's login status
 const store = require('../store.js')
     
 const onSignUpSuccess = () => {
@@ -16,31 +17,30 @@ const onSignInSuccess = (data) => {
   $('#message').text('Signed in successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
+//after a login, save the user data so the token can be retrieved
   store.user = data.user
-  $('#change-pw').show()
-  $('#sign-out').show()
-  $('#sign-up').hide()
-  $('#sign-in').hide()
-//  $('body').css('background-color', '#FC6A03')
+  $('#change-pw').removeAttr('hidden')
+  $('#sign-out').removeAttr('hidden')
+  $('#sign-up').attr('hidden','hidden')
+  $('#sign-in').attr('hidden','hidden')
 }
 
 const onSignInFail = error => {
   $('#message').text('Failed to sign in')
   $('#message').removeClass()
   $('#message').addClass('failure')
-  $('#change-pw').hide()
-  $('#sign-out').hide()
+  $('#change-pw').attr('hidden','hidden')
+  $('#sign-out').attr('hidden','hidden')
 }
 
 const onSignOutSuccess = () => {
   $('#message').text('Signed out successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
-  $('#change-pw').hide()
-  $('#sign-out').hide()
-  $('#sign-up').show()
-  $('#sign-in').show()
-//  $('body').css('background-color', '#FC6A03')
+  $('#change-pw').attr('hidden','hidden')
+  $('#sign-out').attr('hidden','hidden')
+  $('#sign-up').removeAttr('hidden')
+  $('#sign-in').removeAttr('hidden')
 }
 
 const onSignOutFail = () => {
@@ -54,10 +54,10 @@ const onChangePwSuccess = (data) => {
   $('#message').text('Password changed successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
-  $('#change-pw').hide()
-  $('#sign-out').hide()
-  $('#sign-up').show()
-  $('#sign-in').show()
+  $('#change-pw').attr('hidden','hidden')
+  $('#sign-out').attr('hidden','hidden')
+  $('#sign-up').removeAttr('hidden')
+  $('#sign-in').removeAttr('hidden')
   api.signOut()
 }
 
