@@ -22,6 +22,9 @@
       $('#game-board .box').addClass('game-box')
       console.log($('.box').attr('class'))
       $('.game-box').on('click', boxClicked)
+      api.getIndex()
+         .then(ui.onGetIndexSucceed)
+         .catch(ui.onGetIndexFail)
    }
 
 //click a box function
