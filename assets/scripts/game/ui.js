@@ -1,6 +1,17 @@
 'use strict'
    const player = require('./gameData.js')
 
+   const onGetIndexSucceed = (indexData) => {
+      const totalGames = `Total games played: ${indexData.games.length}`
+      $('#total-games').text(totalGames)
+   }
+   
+   const onGetIndexFail = () => {
+      $('#message').text("Couldn't get total played games")
+      $('#message').removeClass()
+      $('#message').addClass('failure') 
+   }
+
    const onSetUpFail = () => {
       $('#message').text('Failed to set up a new game')
       $('#message').removeClass()
@@ -14,19 +25,52 @@
    }
 
 //add the X or O to the board
-   const onSendMoveSucceed = (event) => {
-      if (player.turn === 0){
+   const onPlayerClicked = (event) => {
+      if (player.turn%2 === 0){
          $(event.target).text('X')
-         player.turn = 1
       }
       else{
          $(event.target).text('O')
-         player.turn = 0
+      }
+   }
+   const onWinnerConfirmed = (whichArray) => {
+      let whoseTurn = player.turn%2 === 0 ? 'X' : 'O';
+      $('#message').text(`Player ${whoseTurn} won!`)
+//top left to bottom right diagonal
+      if (whichArray === 0){
+         for(let i = 0; i< player.boxSize; i++){
+            let boxData = `[data-coords=\"${i} ${i}\"]`
+            $(boxData).addClass('bg-primary')
+         }
+      }
+//bottom left to top right diagonal
+      else if (whichArray === player.boxSize+1){
+         for(let i = 0; i< player.boxSize; i++){
+            let boxData = `[data-coords=\"${i} ${player.boxSize-i-1}\"]`
+            $(boxData).addClass('bg-primary')
+         }
+      }
+//vertical win
+      else if (whichArray < player.boxSize+1){
+         for(let i = 0; i< player.boxSize; i++){
+            let boxData = `[data-coords=\"${whichArray-1} ${i}\"]`
+            $(boxData).addClass('bg-primary')
+         }
+      }
+//horizontal win
+      else if (whichArray > player.boxSize+1){
+         for(let i = 0; i< player.boxSize; i++){
+            let boxData = `[data-coords=\"${i} ${whichArray-player.boxSize-2}\"]`
+            $(boxData).addClass('bg-primary')
+         }
       }
    }
 
 module.exports = {
+   onGetIndexSucceed,
+   onGetIndexFail,
    onSetUpFail,
    onSendMoveFail,
-   onSendMoveSucceed
+   onWinnerConfirmed,
+   onPlayerClicked
 }

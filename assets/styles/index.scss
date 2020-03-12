@@ -3,6 +3,10 @@ $alt-color: $cyan;
 $body-bg-color: $gray-200;
 $font-color: $black;
 
+#total-games{
+   border: 3px solid $black;
+}
+
 .box {
   align-items: center;
   background-color: $white;

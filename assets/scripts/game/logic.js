@@ -2,9 +2,11 @@
    const player = require('./gameData.js')
    const gamePlay = require('./events.js')
    const eventHandler = require('../app.js')
+   const ui = require('./ui')
+   const api = require('./api')
 
    const setUp = function (gameData){
-//rest to x going first
+//default to x going first
       player.turn = 0
 //on new game the board should be empty
       $('html .game-box').text('')
@@ -21,38 +23,42 @@
       player.gameId = gameData.game.id 
       $('.box').addClass('game-box')
       $('.container').off('click', gamePlay.newGame)
-      eventHandler.gameBox()
+      console.log(eventHandler)
+      console.log(ui)
+//      eventHandler.gameReady()
    }
 
-//update the internal boardstate
-   const boardUpdate = function(event){
-//gets the coordinates for a 2d array based on the data atribute of the game board divs, the map transforms the string to integer
-      let pos = $(event.target).data().coords.split(' ').map(str => +str)
-      console.log(player.boardState)
-      if (!player.boardState[pos[0]][pos[1]]){
-//if the clicked spot is empty, put an X or O in it depending on player.turn and then change player.turn
-         player.boardState[pos[0]][pos[1]] = player.turn === 0 ? 'X' : 'O';
-         winnerUpdate(pos)
-         console.log(player.winner)
-         player.turn = player.turn === 0 ? 1 : 0;
-      }
+//check if someone won
+const winnerWinner = () => {
+//the inside findIndex checks to see if anyone has more than 3 in a magic square vector. The second one tells me in which row/column/diagonal the player actually won
+   let weHaveAWinner = player.winner.findIndex(squareVectors => squareVectors.findIndex(playerValues => playerValues === 3) !== -1) 
+   if (weHaveAWinner !== -1){
+      $('.game-box').off('click', gamePlay.boxClicked)
+      ui.onWinnerConfirmed(weHaveAWinner)
+      return true
    }
+}
 
-   const winnerUpdate = function (pos) { 
+//update the magic square set of vectors
+   const winnerUpdate = function (boxCoords) { 
 //figure out who just took a turn
-      let who = player.turn === 0 ? 0 : 1;
-//increment the 8 parts of winner (magic square logic) based on the position the user just clicked
-      player.winner[pos[0]+1][who]++
-      player.winner[pos[1]+3+2][who]++
-      if (pos[0]===pos[1]){
-         player.winner[0][who]++
+      let whoseTurn = player.turn%2 === 0 ? 0 : 1;
+      let x = boxCoords[0]
+      let y = boxCoords[1]
+      let boxSize = player.boxSize
+//there are 8 unique row/column/diagonals in a square, so for each I store if player x (player.winner[vector][0]) or player o (player.winner[vector][1]) has played in that vector, and then how many times they've played there
+      player.winner[x+1][whoseTurn]++
+      player.winner[y+boxSize+2][whoseTurn]++
+      if (x===y){
+         player.winner[0][whoseTurn]++
       }
-      else if(pos[0]+pos[1] + 1 === 3){
-         player.winner[3+1][who]++
+      if(x+y + 1 === player.boxSize){
+         player.winner[boxSize+1][whoseTurn]++
       }
    }
 
 module.exports = {
    setUp,
-   boardUpdate
+   winnerWinner,
+   winnerUpdate
 }

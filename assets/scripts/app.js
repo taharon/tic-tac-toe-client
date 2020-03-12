@@ -7,6 +7,9 @@
 // require('./example')
 
 const store = require('./store.js')
+const gamePlay = require('./game/events.js')
+const gameApi = require('./game/api.js')
+const gameUi = require('./game/ui.js')
 //if user doesn't currently exist, don't show change password or sign-out
 if (!store.user){
    $('#change-pw').attr('hidden','hidden')
@@ -33,15 +36,26 @@ $(() => {
    $('#change-pw').on('submit', userCreate.onChangePw)
    $('#sign-out').on('submit', userCreate.onSignOut)
 
-   const gamePlay = require('./game/events.js')
    $('#new-game').on('submit', gamePlay.newGame)
-   $('.container').on('click', gamePlay.newGame)
 })
 
-const gameBox = () => {
-   const gamePlay = require('./game/events.js')
+const gameReady = () => {
    $('.game-box').on('click', gamePlay.boxClicked)
 }
-module.exports = {
-   gameBox
+
+const startFromBoard = () => {
+   $('#demo-board').on('click', gamePlay.newGame)
 }
+
+const showTotal = () => {
+//   gameApi.getIndex()
+//      .then(gameUi.onGetIndexSucceed)
+//      .catch(gameUi.onGetIndexFail)
+}
+
+module.exports = {
+   gameReady,
+   startFromBoard,
+   showTotal
+}
+console.log(module.exports)

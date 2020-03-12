@@ -1,6 +1,7 @@
 'use strict'
 //removeAttr('hidden') and attr('hidden','hidden') are used in this page to show or hide html elements depending on a user's login status
 const store = require('../store.js')
+const gameAvailable = require('../app.js')
     
 const onSignUpSuccess = () => {
   $('#message').text('Signed up successfully')
@@ -23,6 +24,9 @@ const onSignInSuccess = (data) => {
   $('#sign-out').removeAttr('hidden')
   $('#sign-up').attr('hidden','hidden')
   $('#sign-in').attr('hidden','hidden')
+  gameAvailable.startFromBoard()
+  gameAvailable.showTotal()
+  $('#new-game').removeAttr('hidden')
 }
 
 const onSignInFail = error => {

@@ -46,12 +46,13 @@
       </form>
 <!--the game board begins here-->
       </br>
-      <form id='new-game'>
+      <form hidden='hidden' id='new-game'>
          <fieldset form='new-game'>
             <input type='submit' value="New Game"></input>
          </fieldset>
       </form>
-      <div class="container">
+      <div id='total-games'></div>
+      <div hidden='hidden' id='game-board' class="container">
          <div class="row">
             <div data-coords="0 0" class="col-4 box"></div>
             <div data-coords="1 0" class="col-4 box"></div>
@@ -66,6 +67,23 @@
             <div data-coords="0 2" class="col-4 box"></div>
             <div data-coords="1 2" class="col-4 box"></div>
             <div data-coords="2 2" class="col-4 box"></div>
+         </div>
+      </div>
+      <div id='demo-board' class="container">
+         <div class="row">
+            <div class="col-4 box">X</div>
+            <div class="col-4 box">O</div>
+            <div class="col-4 box bg-primary">X</div>
+         </div>
+         <div class="row">
+            <div class="col-4 box">O</div>
+            <div class="col-4 box">O</div>
+            <div class="col-4 box bg-primary">X</div>
+         </div>
+         <div class="row">
+            <div class="col-4 box"></div>
+            <div class="col-4 box"></div>
+            <div class="col-4 box bg-primary">X</div>
          </div>
       </div>
     </body>

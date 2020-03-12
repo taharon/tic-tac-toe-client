@@ -17,11 +17,20 @@
       )
    }
 
+   const getIndex = () => {
+      return $.ajax(
+         {
+            url: url.apiUrl + 'games',
+            headers:{
+               "Authorization": `Token token=${store.user.token}`
+            },
+            method: 'GET'
+         }
+      )
+   }
+
 //called from the boardUpdate function in logic, which passes the string containing game state + whos played as well as the index to update on the api in who and pos, respectively
-   const sendMove = (who, pos) => {
-//      let who = player.turn === 0 ? 'X' : 'O'; 
-//      let pos = $(event.target).data().coords.split(' ')
-//      pos = pos[1]*3 + pos[0]
+   const sendMove = (xOrO, apiIndex) => {
       return $.ajax(
          {
             url: url.apiUrl + 'games/' + player.gameId,
@@ -32,8 +41,8 @@
             data: {
                game: {
                   cell: {
-                     index: pos,
-                     value: who
+                     index: apiIndex,
+                     value: xOrO
                   },
                   over: false
                }
@@ -45,5 +54,6 @@
 
 module.exports = {
    createGame,
-   sendMove
+   sendMove,
+   getIndex
 }
