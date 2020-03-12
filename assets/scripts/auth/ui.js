@@ -1,7 +1,6 @@
 'use strict'
 //removeAttr('hidden') and attr('hidden','hidden') are used in this page to show or hide html elements depending on a user's login status
 const store = require('../store.js')
-const gameAvailable = require('../app.js')
     
 const onSignUpSuccess = () => {
   $('#message').text('Signed up successfully')
@@ -24,8 +23,13 @@ const onSignInSuccess = (data) => {
   $('#sign-out').removeAttr('hidden')
   $('#sign-up').attr('hidden','hidden')
   $('#sign-in').attr('hidden','hidden')
-  gameAvailable.startFromBoard()
-  gameAvailable.showTotal()
+  const gamePlay = require('../game/events.js')
+  $('#demo-board').on('click', gamePlay.newGame)
+  const gameApi = require('../game/api.js')
+  const gameUi = require('../game/ui.js')
+  gameApi.getIndex()
+     .then(gameUi.onGetIndexSucceed)
+     .catch(gameUi.onGetIndexFail)
   $('#new-game').removeAttr('hidden')
 }
 
@@ -45,6 +49,10 @@ const onSignOutSuccess = () => {
   $('#sign-out').attr('hidden','hidden')
   $('#sign-up').removeAttr('hidden')
   $('#sign-in').removeAttr('hidden')
+  $('#total-games').attr('hidden','hidden')
+  $('#new-game').attr('hidden','hidden')
+  $('#game-board').attr('hidden','hidden')
+  $('#demo-board').removeAttr('hidden')
 }
 
 const onSignOutFail = () => {

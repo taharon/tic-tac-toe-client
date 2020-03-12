@@ -21,11 +21,8 @@
          player.winner[i] = new Array(2).fill(0)
       }
       player.gameId = gameData.game.id 
-      $('.box').addClass('game-box')
+      $('#game-board .box').addClass('game-box')
       $('.container').off('click', gamePlay.newGame)
-      console.log(eventHandler)
-      console.log(ui)
-//      eventHandler.gameReady()
    }
 
 //check if someone won

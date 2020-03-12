@@ -9,13 +9,19 @@
 //turn off the event handlers on each game-box when a new game is started (in case someone clicks new game without finishing a game)
       $('.game-box').off('click', boxClicked)
       $('.game-box').removeClass('bg-primary')
+//remove the demo game board
       $('#demo-board').attr('hidden','hidden')
       $('#game-board').removeAttr('hidden')
 //start a game
+      $('#message').removeClass()
+      $('#message').addClass('success')
       $('#message').text("It is X's turn!")
       api.createGame()
          .then(logic.setUp)
          .catch(ui.onSetUpFail)
+      $('#game-board .box').addClass('game-box')
+      console.log($('.box').attr('class'))
+      $('.game-box').on('click', boxClicked)
    }
 
 //click a box function

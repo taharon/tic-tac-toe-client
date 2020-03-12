@@ -38,24 +38,3 @@ $(() => {
 
    $('#new-game').on('submit', gamePlay.newGame)
 })
-
-const gameReady = () => {
-   $('.game-box').on('click', gamePlay.boxClicked)
-}
-
-const startFromBoard = () => {
-   $('#demo-board').on('click', gamePlay.newGame)
-}
-
-const showTotal = () => {
-//   gameApi.getIndex()
-//      .then(gameUi.onGetIndexSucceed)
-//      .catch(gameUi.onGetIndexFail)
-}
-
-module.exports = {
-   gameReady,
-   startFromBoard,
-   showTotal
-}
-console.log(module.exports)
