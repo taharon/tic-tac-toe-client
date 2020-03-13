@@ -19,8 +19,6 @@
       api.createGame()
          .then(logic.setUp)
          .catch(ui.onSetUpFail)
-      $('#game-board .box').addClass('game-box')
-      console.log($('.box').attr('class'))
       $('.game-box').on('click', boxClicked)
       api.getIndex()
          .then(ui.onGetIndexSucceed)
@@ -37,13 +35,12 @@
       if (!player.boardState[x][y]){
          let whoseTurn = player.turn%2 === 0 ? 'X' : 'O';
          player.boardState[x][y] = whoseTurn
-         console.log(player.boardState)
-         console.log(player.winner)
 //did someone win?
          logic.winnerUpdate(boxCoords)
          ui.onPlayerClicked(event)
          api.sendMove(whoseTurn, (y*3+x))
          whoseTurn = player.turn%2 !== 0 ? 'X' : 'O';
+         $('#message').addClass('success')         
          $('#message').text(`It is ${whoseTurn}\'s turn!`)
          if(logic.winnerWinner()){ return }
 //if not, change player turn

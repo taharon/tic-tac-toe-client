@@ -51,39 +51,39 @@
             <input type='submit' value="New Game"></input>
          </fieldset>
       </form>
-      <div id='total-games'></div>
+      <div hidden='hidden' id='total-games'></div>
       <div hidden='hidden' id='game-board' class="container">
          <div class="row">
-            <div data-coords="0 0" class="col-4 box"></div>
-            <div data-coords="1 0" class="col-4 box"></div>
-            <div data-coords="2 0" class="col-4 box"></div>
+            <div data-coords="1 0" class="col-4 box game-box border-top-0 border-left-0"></div>
+            <div data-coords="0 0" class="col-4 box game-box border-top-0"></div>
+            <div data-coords="2 0" class="col-4 box game-box border-top-0 border-right-0"></div>
          </div>
          <div class="row">
-            <div data-coords="0 1" class="col-4 box"></div>
-            <div data-coords="1 1" class="col-4 box"></div>
-            <div data-coords="2 1" class="col-4 box"></div>
+            <div data-coords="0 1" class="col-4 box game-box border-left-0"></div>
+            <div data-coords="1 1" class="col-4 box game-box"></div>
+            <div data-coords="2 1" class="col-4 box game-box border-right-0"></div>
          </div>
          <div class="row">
-            <div data-coords="0 2" class="col-4 box"></div>
-            <div data-coords="1 2" class="col-4 box"></div>
-            <div data-coords="2 2" class="col-4 box"></div>
+            <div data-coords="0 2" class="col-4 box game-box border-bottom-0 border-left-0"></div>
+            <div data-coords="1 2" class="col-4 box game-box border-bottom-0"></div>
+            <div data-coords="2 2" class="col-4 box game-box border-bottom-0 border-right-0"></div>
          </div>
       </div>
       <div id='demo-board' class="container">
          <div class="row">
-            <div class="col-4 box">X</div>
-            <div class="col-4 box">O</div>
-            <div class="col-4 box bg-primary">X</div>
+            <div class="col-4 box border-top-0 border-left-0">X</div>
+            <div class="col-4 box border-top-0">O</div>
+            <div class="col-4 box border-top-0 border-right-0 bg-primary">X</div>
          </div>
          <div class="row">
+            <div class="col-4 box border-left-0">O</div>
             <div class="col-4 box">O</div>
-            <div class="col-4 box">O</div>
-            <div class="col-4 box bg-primary">X</div>
+            <div class="col-4 box border-right-0 bg-primary">X</div>
          </div>
          <div class="row">
-            <div class="col-4 box"></div>
-            <div class="col-4 box"></div>
-            <div class="col-4 box bg-primary">X</div>
+            <div class="col-4 border-bottom-0 box border-left-0"></div>
+            <div class="col-4 border-bottom-0 box"></div>
+            <div class="col-4 border-bottom-0 box border-right-0 bg-primary">X</div>
          </div>
       </div>
     </body>
