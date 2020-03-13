@@ -19,9 +19,27 @@ $font-color: $black;
   justify-content: center;
 }
 
+#test{
+   margin: 0 1em;
+   width: 100%;
+}
+
+.nav-sign-up{
+   text-align: center;
+   font-size: .4em;
+}
+
+.extra-row{
+   height: 75px;
+}
+
 .failure{
    color: red;
 }
 .success{
    color: green;
+}
+
+.boxsize{
+   height: 150px;
 }

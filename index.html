@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
     <head>
       <title>Example</title>
@@ -12,17 +12,49 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic-Tac-Toe</h1>
+       <nav class="navbar-expand">
+          <div class="collapse navbar-collapse bg-info">
+            <div id='test' class="container">
+               <div class="row">
+                  <div class="col-12 box bg-info border-0">Tic-Tac-Toe</div>
+               </div>
+               <div class="row">
+                  <!--div class="col-1 box bg-info border-0"></div-->
+                  <div class="col-6 box bg-info border-0 boxsize">
+                     <form class='container' id='sign-up'>
+                        <fieldset form='sign-up'>
+                           <div class="extra-row row">
+                              <input class='nav-sign-up col-4' type='text' name='credentials[email]' placeholder='Email'></input>
+                              <!--div class='nav-sign-up col-1 bg-info'></div-->
+                              <input class='nav-sign-up col-4' type='password' name='credentials[password]' placeholder='Password'></input>
+                              <!--div class='nav-sign-up col-1 bg-info'></div-->
+                              <input class='nav-sign-up col-4' type='password' name='credentials[password_confirmation]' placeholder='Password again'></input>
+                           </div>
+                           <div class="extra-row row">
+                              <!--div class='nav-sign-up col-4 bg-info'></div-->
+                              <input class='border border-dark nav-sign-up col-12 rounded-pill' type='submit' value="Sign Up"></input>
+                              <!--div class='nav-sign-up col-4 bg-info'></div-->
+                           </div>
+                        </fieldset>
+                     </form>
+                  </div>
+                  <div class="col-2 box bg-info border-0 boxsize"></div>
+                  <div class="col-4 box bg-info border-0 boxsize">Tic-Tac-Toe</div>
+               </div>
+               <!--div class="row">
+                  <div class="border border-secondary col-1 box bg-info border-0">a</div>
+                  <div class="border border-secondary col-2 box bg-info border-0">s</div>
+                  <div class="border border-secondary col-2 box bg-info border-0">s</div>
+                  <div class="border border-secondary col-2 box bg-info border-0">s</div>
+                  <div class="border border-secondary col-2 box bg-info border-0"></div>
+                  <div class="border border-secondary col-2 box bg-info border-0">s</div>
+                  <div class="border border-secondary col-2 box bg-info border-0">s</div>
+               </div-->
+            </div>
+          </div>
+       </nav>
       <h2 id='message'></h2>
-      <form id='sign-up'>
-         <fieldset form='sign-up'>
-            <legend>Create an account</legend>
-            <input type='text' name='credentials[email]' placeholder='Example@domain.com'></input>
-            <input type='password' name='credentials[password]' placeholder='Enter a password'></input>
-            <input type='password' name='credentials[password_confirmation]' placeholder='Enter password again'></input>
-            <input type='submit' value="Sign Up"></input> 
-         </fieldset>
-      </form>
+      
       <form id='sign-in'>
          <fieldset form='sign-in'>
             <legend>Log in to an account</legend>
@@ -54,8 +86,8 @@
       <div hidden='hidden' id='total-games'></div>
       <div hidden='hidden' id='game-board' class="container">
          <div class="row">
-            <div data-coords="1 0" class="col-4 box game-box border-top-0 border-left-0"></div>
-            <div data-coords="0 0" class="col-4 box game-box border-top-0"></div>
+            <div data-coords="0 0" class="col-4 box game-box border-top-0 border-left-0"></div>
+            <div data-coords="1 0" class="col-4 box game-box border-top-0"></div>
             <div data-coords="2 0" class="col-4 box game-box border-top-0 border-right-0"></div>
          </div>
          <div class="row">
