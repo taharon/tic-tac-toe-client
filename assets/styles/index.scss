@@ -13,24 +13,33 @@ $font-color: $black;
   border: 3px solid $black;
   color: $font-color;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 60px;
   display: flex;
   height: 80px;
   justify-content: center;
 }
 
 #test{
-   margin: 0 1em;
+//   margin: 0 1em;
    width: 100%;
 }
 
 .nav-sign-up{
    text-align: center;
-   font-size: .4em;
+   font-size: .3em;
 }
 
 .extra-row{
-   height: 75px;
+   height: 40%;
+   margin: 1.66% 0 1.66% 0;
+}
+
+#sign-up{
+   height: 100%;
+}
+
+#sign-in{
+   height: 100%;
 }
 
 .failure{

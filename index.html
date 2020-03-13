@@ -22,7 +22,6 @@
                   <!--div class="col-1 box bg-info border-0"></div-->
                   <div class="col-6 box bg-info border-0 boxsize">
                      <form class='container' id='sign-up'>
-                        <fieldset form='sign-up'>
                            <div class="extra-row row">
                               <input class='nav-sign-up col-4' type='text' name='credentials[email]' placeholder='Email'></input>
                               <!--div class='nav-sign-up col-1 bg-info'></div-->
@@ -31,15 +30,26 @@
                               <input class='nav-sign-up col-4' type='password' name='credentials[password_confirmation]' placeholder='Password again'></input>
                            </div>
                            <div class="extra-row row">
-                              <!--div class='nav-sign-up col-4 bg-info'></div-->
-                              <input class='border border-dark nav-sign-up col-12 rounded-pill' type='submit' value="Sign Up"></input>
-                              <!--div class='nav-sign-up col-4 bg-info'></div-->
+                              <div class='nav-sign-up col-2 bg-info'></div>
+                              <input class='border border-dark nav-sign-up col-8 rounded-pill' type='submit' value="Sign Up"></input>
+                              <div class='nav-sign-up col-2 bg-info'></div>
                            </div>
-                        </fieldset>
                      </form>
                   </div>
                   <div class="col-2 box bg-info border-0 boxsize"></div>
-                  <div class="col-4 box bg-info border-0 boxsize">Tic-Tac-Toe</div>
+                  <div class="col-4 box bg-info border-0 boxsize">
+                     <form id='sign-in'>
+                           <div class="extra-row row">
+                              <input class='nav-sign-up col-6' type='text' name='credentials[email]' placeholder='Email'></input>
+                              <input class='nav-sign-up col-6' type='password' name='credentials[password]' placeholder='Password'></input>
+                           </div>
+                           <div class="extra-row row">
+                              <div class='nav-sign-up col-2 bg-info'></div>
+                              <input class='border border-dark nav-sign-up col-8 rounded-pill' type='submit' value="Log In"></input>
+                              <div class='nav-sign-up col-2 bg-info'></div>
+                           </div>
+                     </form>
+                  </div>
                </div>
                <!--div class="row">
                   <div class="border border-secondary col-1 box bg-info border-0">a</div>
@@ -55,14 +65,7 @@
        </nav>
       <h2 id='message'></h2>
       
-      <form id='sign-in'>
-         <fieldset form='sign-in'>
-            <legend>Log in to an account</legend>
-            <input type='text' name='credentials[email]' placeholder='Example@domain.com'></input>
-            <input type='password' name='credentials[password]' placeholder='Enter a password'></input>
-            <input type='submit' value="Log In"></input> 
-         </fieldset>
-      </form>
+
       <form id='change-pw'>
          <fieldset form='change-pw'>
             <legend>Change your password</legend>
