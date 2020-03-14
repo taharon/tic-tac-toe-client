@@ -24,8 +24,8 @@ $font-color: $black;
    width: 100%;
 }
 
-.nav-sign-up{
-//   text-align: center;
+.nav-font{
+   text-align: center;
    font-size: .3em;
 }
 
@@ -38,6 +38,11 @@ $font-color: $black;
 }
 
 #sign-in{
+   height: 100%;
+}
+
+#full{
+   width: 100%;
    height: 100%;
 }
 
