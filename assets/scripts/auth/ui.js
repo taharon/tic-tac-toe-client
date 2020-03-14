@@ -31,6 +31,8 @@ const onSignInSuccess = (data) => {
      .then(gameUi.onGetIndexSucceed)
      .catch(gameUi.onGetIndexFail)
   $('#new-game').removeAttr('hidden')
+  $('.hide-user').removeAttr('hidden')
+  $('.username').text(store.user.email)
 }
 
 const onSignInFail = error => {
@@ -53,6 +55,7 @@ const onSignOutSuccess = () => {
   $('#new-game').attr('hidden','hidden')
   $('#game-board').attr('hidden','hidden')
   $('#demo-board').removeAttr('hidden')
+  $('.hide-user').attr('hidden', 'hidden')
 }
 
 const onSignOutFail = () => {
