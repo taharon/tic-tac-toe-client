@@ -3,6 +3,7 @@
 
    const onGetIndexSucceed = (indexData) => {
       const totalGames = `Total games played: ${indexData.games.length}`
+      $('#total-games').removeAttr('hidden')
       $('#total-games').text(totalGames)
    }
    
