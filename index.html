@@ -32,18 +32,18 @@
                               <div class='nav-font col-2 bg-info'></div>
                            </div>
                      </form>
-                     <div class="container hide-user" hidden='hidden' id="sign-up">
+                     <div class="container hide-user" hidden='hidden'>
                         <div class="row extra-row hide-user" hidden="hidden">
                            <div class="nav-font col-2 bg-info"></div>
                            <div class="username bg-info col-8" style='font-size: .6em; text-align: center;'></div>
                            <div class="nav-font col-2 bg-info"></div>
                         </div>
-                        <div class="row extra-row nav-font hide-user" hidden="hidden">
+                        <div class="row extra-row mt-3 nav-font hide-user" hidden="hidden">
                            <div class="col-1 bg-info"></div>
                            <div hidden='hidden' class='bg-secondary col-4' id='total-games'></div>
                            <div class="col-2 bg-info"></div>
                            <form hidden='hidden' class='col-4' id='new-game'>
-                                 <input type='submit' id='full' class='border border-dark rounded-pill' value="New Game"></input>
+                                 <input type='submit' class='full border border-dark rounded-pill' value="New Game"></input>
                            </form>
                            <div class="col-1 bg-info"></div>
                         </div>
@@ -62,14 +62,25 @@
                               <div class='nav-font col-2 bg-info'></div>
                            </div>
                      </form>
+                     <div class="container hide-user" hidden='hidden'>
+                           <form id='sign-out' class='full'>
+                              <div class="extra-row row full">
+                                 <input type='submit' class='full col-12 border border-dark nav-font rounded-pill' value="Sign Out"></input>
+                              </div>
+                           </form>
+                           <form id='test-out'>
+                              <div class="extra-row row full">
+                                 <input type='submit' class='full col-12 border border-dark nav-font rounded-pill' value="test Out"></input>
+                              </div>
+                           </form>
+                     </div>
                   </div>
                </div>
             </div>
           </div>
        </nav>
-      <h2 id='message'></h2>
+      <h2 style='text-align: center' id='message'></h2>
       
-
       <form id='change-pw'>
          <fieldset form='change-pw'>
             <legend>Change your password</legend>
@@ -78,11 +89,7 @@
             <input type='submit' value="Change Your Password"></input> 
          </fieldset>
       </form>
-      <form id='sign-out'>
-         <fieldset form='sign-out'>
-            <input type='submit' value="Sign Out"></input>
-         </fieldset>
-      </form>
+
 <!--the game board begins here-->
       <div hidden='hidden' id='game-board' class="container">
          <div class="row">
