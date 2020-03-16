@@ -36,4 +36,5 @@ $(() => {
    $('#cancel-pw').on('click', userCreate.onPassCancel)
    $('#pass-change-show').on('click', userCreate.onPassChange)
    $('#new-game').on('submit', gamePlay.newGame)
+   $('#cancel-change-pw').on('click', userCreate.onPassCancel)
 })

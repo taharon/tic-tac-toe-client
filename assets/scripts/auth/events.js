@@ -59,15 +59,23 @@
 
    const onPassChange = function (event) {
       event.preventDefault()
-      $('.pass-logout').attr('hidden', 'hidden')
+      $('#pass-logout').attr('hidden', 'hidden')
       $('#change-pw').removeAttr('hidden')
+      $('html form').trigger('reset')
    }
+
+      const onPassCancel = function (event) {
+         event.preventDefault()
+         $('#pass-logout').removeAttr('hidden')
+         $('#change-pw').attr('hidden', 'hidden')
+         $('html form').trigger('reset')
+      }
 
 module.exports = {
    onSignUp,
    onSignIn,
    onSignOut,
    onChangePw,
-   onPassChange
+   onPassChange,
+   onPassCancel
 }
-
