@@ -1,6 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Acme&display=swap');
 $alt-color: $cyan;
-$body-bg-color: rgb(128,128,128);
+$body-bg-color: rgb(216, 216, 216);
 $font-color: $black;
 
 #total-games{
@@ -20,7 +21,7 @@ body{
   font-weight: 700;
   font-size: 60px;
   display: flex;
-  height: 80px;
+  height: 150px;
   justify-content: center;
 }
 
@@ -39,13 +40,6 @@ body{
 }
 
 #sign-up, #change-pw, #sign-in{
-   height: 100%;
-}
-#change-pw{
-   height: 100%
-}
-
-#sign-in{
    height: 100%;
 }
 
@@ -67,10 +61,22 @@ body{
    color: green;
 }
 
-.boxsize{
-   height: 150px;
+.title, #message{
+   font-family: 'Acme', sans-serif;
 }
 
-.bg-color{
+.nav-color{
    background-color: #77cedb;
 }
+
+.game-box, .demo-box {
+   align-items: center;
+   background-color: $body-bg-color;
+   border: 3px solid rgb(59, 58, 58);
+   color: $font-color;
+   font-weight: 700;
+   font-size: 60px;
+   display: flex;
+   height: 80px;
+   justify-content: center;
+ }
