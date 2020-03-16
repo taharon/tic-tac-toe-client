@@ -8,7 +8,7 @@
       event.preventDefault()
 //turn off the event handlers on each game-box when a new game is started (in case someone clicks new game without finishing a game)
       $('.game-box').off('click', boxClicked)
-      $('.game-box').removeClass('bg-primary')
+      $('.game-box').removeClass('winner-color')
 //remove the demo game board
       $('#demo-board').attr('hidden','hidden')
       $('#game-board').removeAttr('hidden')

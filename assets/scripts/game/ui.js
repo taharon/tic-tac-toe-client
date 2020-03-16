@@ -3,7 +3,6 @@
 
    const onGetIndexSucceed = (indexData) => {
       const totalGames = `Total games played: ${indexData.games.length}`
-      $('#total-games').removeAttr('hidden')
       $('#total-games').text(totalGames)
    }
    
@@ -41,28 +40,28 @@
       if (whichArray === 0){
          for(let i = 0; i< player.boxSize; i++){
             let boxData = `[data-coords=\"${i} ${i}\"]`
-            $(boxData).addClass('bg-primary')
+            $(boxData).addClass('winner-color')
          }
       }
 //bottom left to top right diagonal
       else if (whichArray === player.boxSize+1){
          for(let i = 0; i< player.boxSize; i++){
             let boxData = `[data-coords=\"${i} ${player.boxSize-i-1}\"]`
-            $(boxData).addClass('bg-primary')
+            $(boxData).addClass('winner-color')
          }
       }
 //vertical win
       else if (whichArray < player.boxSize+1){
          for(let i = 0; i< player.boxSize; i++){
             let boxData = `[data-coords=\"${whichArray-1} ${i}\"]`
-            $(boxData).addClass('bg-primary')
+            $(boxData).addClass('winner-color')
          }
       }
 //horizontal win
       else if (whichArray > player.boxSize+1){
          for(let i = 0; i< player.boxSize; i++){
             let boxData = `[data-coords=\"${i} ${whichArray-player.boxSize-2}\"]`
-            $(boxData).addClass('bg-primary')
+            $(boxData).addClass('winner-color')
          }
       }
    }

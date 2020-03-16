@@ -62,8 +62,12 @@ body{
    color: green;
 }
 
+.winner-color{
+   background-color: rgb(135, 206, 150);
+}
+
 .nav-color{
-   background-color: #77cedb;
+   background-color: #81c8d3;
 }
 
 .game-box, .demo-box {
@@ -71,8 +75,8 @@ body{
    border: 3px solid rgb(59, 58, 58);
    color: $font-color;
    font-weight: 700;
-   font-size: 60px;
+   font-size: 150px;
    display: flex;
-   height: 80px;
+   height: 180px;
    justify-content: center;
  }
