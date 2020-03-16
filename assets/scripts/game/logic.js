@@ -21,7 +21,6 @@
          player.winner[i] = new Array(2).fill(0)
       }
       player.gameId = gameData.game.id 
-      $('#game-board .box').addClass('game-box')
       $('.container').off('click', gamePlay.newGame)
    }
 

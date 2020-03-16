@@ -33,8 +33,11 @@ $font-color: $black;
    height: 40%;
 }
 
-#sign-up{
+#sign-up, #change-pw, #sign-in{
    height: 100%;
+}
+#change-pw{
+   height: 100%
 }
 
 #sign-in{
