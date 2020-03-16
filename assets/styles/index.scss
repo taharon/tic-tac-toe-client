@@ -11,6 +11,7 @@ $font-color: $black;
 
 body{
    background-color: $body-bg-color;
+   font-family: 'Acme', sans-serif;
 }
 
 .box {
@@ -61,17 +62,12 @@ body{
    color: green;
 }
 
-.title, #message{
-   font-family: 'Acme', sans-serif;
-}
-
 .nav-color{
    background-color: #77cedb;
 }
 
 .game-box, .demo-box {
    align-items: center;
-   background-color: $body-bg-color;
    border: 3px solid rgb(59, 58, 58);
    color: $font-color;
    font-weight: 700;

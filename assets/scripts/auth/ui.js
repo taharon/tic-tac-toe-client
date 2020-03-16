@@ -26,6 +26,7 @@ const onSignInSuccess = (data) => {
   $('#demo-board').on('click', gamePlay.newGame)
   const gameApi = require('../game/api.js')
   const gameUi = require('../game/ui.js')
+  $('#total-games').removeAttr('hidden')
   gameApi.getIndex()
      .then(gameUi.onGetIndexSucceed)
      .catch(gameUi.onGetIndexFail)
