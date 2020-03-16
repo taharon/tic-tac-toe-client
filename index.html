@@ -33,15 +33,18 @@
                            </div>
                      </form>
                      <div class="container hide-user" hidden='hidden'>
+                        <!--Username-->
                         <div class="row extra-row hide-user" hidden="hidden">
                            <div class="nav-font col-2 bg-info"></div>
                            <div class="username bg-info col-8" style='font-size: .6em; text-align: center;'></div>
                            <div class="nav-font col-2 bg-info"></div>
                         </div>
+                        <!--Stats-->
                         <div class="row extra-row mt-3 nav-font hide-user" hidden="hidden">
                            <div class="col-1 bg-info"></div>
                            <div hidden='hidden' class='bg-secondary col-4' id='total-games'></div>
                            <div class="col-2 bg-info"></div>
+                        <!--New Game-->
                            <form hidden='hidden' class='col-4' id='new-game'>
                                  <input type='submit' class='full border border-dark rounded-pill' value="New Game"></input>
                            </form>
@@ -49,8 +52,10 @@
                         </div>
                      </div>
                   </div>
+                  <!--Spacing for second half of nav-->
                   <div class="col-2 box bg-info border-0 boxsize"></div>
                   <div class="col-4 box bg-info border-0 boxsize">
+                     <!--Sign in stuff-->
                      <form id='sign-in'>
                            <div class="extra-row row">
                               <input class='nav-font col-6' type='text' name='credentials[email]' placeholder='Email'></input>
@@ -62,7 +67,16 @@
                               <div class='nav-font col-2 bg-info'></div>
                            </div>
                      </form>
-                     <div class="container hide-user" hidden='hidden'>
+                     <!--Sign out, Change pw-->
+                     <form class='pass-logout full' hidden='hidden'>
+                        <div class="row extra-row">
+                           <button type='button' id='sign-out' class='col-12 border border-dark nav-font rounded-pill'>Sign Out</button>
+                        </div>
+                        <div class="row mt-3 extra-row">
+                           <button type='button' id='pass-change-show' class='border border-dark nav-font col-12 rounded-pill'>Change Password</button>
+                        </div>
+                     </form>
+                   <!--  <div class="container hide-user" hidden='hidden'>
                            <form id='sign-out' class='full'>
                               <div class="extra-row row full">
                                  <input type='submit' class='full col-12 border border-dark nav-font rounded-pill' value="Sign Out"></input>
@@ -73,7 +87,7 @@
                                  <input type='submit' class='full col-12 border border-dark nav-font rounded-pill' value="test Out"></input>
                               </div>
                            </form>
-                     </div>
+                     </div>-->
                   </div>
                </div>
             </div>
@@ -81,7 +95,7 @@
        </nav>
       <h2 style='text-align: center' id='message'></h2>
       
-      <form id='change-pw'>
+      <form id='change-pw' hidden='hidden'>
          <fieldset form='change-pw'>
             <legend>Change your password</legend>
             <input class='change' type='password' name='passwords[old]' placeholder='Old Password'></input>

@@ -52,10 +52,18 @@
 //resetting the forms on any button click
       $('html form').trigger('reset')
    }
+
+   const onPassChange = function (event) {
+      event.preventDefault()
+      $('.pass-logout').attr('hidden', 'hidden')
+      $('.change-pw').removeAttr('hidden')
+   }
+
 module.exports = {
    onSignUp,
    onSignIn,
    onSignOut,
-   onChangePw
+   onChangePw,
+   onPassChange
 }
 
