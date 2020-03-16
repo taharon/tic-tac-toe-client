@@ -34,7 +34,7 @@
                      </form>
                      <div class="container hide-user" hidden='hidden'>
                         <!--Username-->
-                        <div class="row extra-row hide-user" hidden="hidden">
+                        <div style='margin: -15px 0 0 0' class="row extra-row hide-user" hidden="hidden">
                            <div class="nav-font col-2 bg-info"></div>
                            <div class="username bg-info col-8" style='font-size: .6em; text-align: center;'></div>
                            <div class="nav-font col-2 bg-info"></div>
@@ -67,7 +67,7 @@
                               <div class='nav-font col-2 bg-info'></div>
                            </div>
                      </form>
-                     <!--Sign out, Change pw-->
+                     <!--Sign out, Show change pw-->
                      <form class='pass-logout full' hidden='hidden'>
                         <div class="row extra-row">
                            <button type='button' id='sign-out' class='col-12 border border-dark nav-font rounded-pill'>Sign Out</button>
@@ -75,6 +75,21 @@
                         <div class="row mt-3 extra-row">
                            <button type='button' id='pass-change-show' class='border border-dark nav-font col-12 rounded-pill'>Change Password</button>
                         </div>
+                     </form>
+                     <!--Actual change password-->
+                     <form id='change-pw' hidden='hidden'>
+                        <div class="extra-row row">
+                           <input class='nav-font col-6' type='password' id='old-pw' name='passwords[old]' placeholder='Old Password'></input>
+                           <input class='nav-font col-6' type='password' id='new-pw' name='passwords[new]' placeholder='New Password'></input>
+                        </div>
+                        <div class="extra-row row mt-3">
+                           <button class='border border-dark nav-font col-6 rounded-pill'>Cancel</button>
+                           <input  id='change-pw-button' class='border border-dark nav-font col-6 rounded-pill' type='submit' value="Submit"></input>
+           <!--             </div>
+                           <input class='change' type='password' name='passwords[old]' placeholder='Old Password'></input>
+                           <input class='change' type='password' name='passwords[new]]' placeholder='New Password'></input>
+                           <input type='submit' value="Change Your Password"></input> 
+                        -->
                      </form>
                    <!--  <div class="container hide-user" hidden='hidden'>
                            <form id='sign-out' class='full'>
@@ -94,15 +109,6 @@
           </div>
        </nav>
       <h2 style='text-align: center' id='message'></h2>
-      
-      <form id='change-pw' hidden='hidden'>
-         <fieldset form='change-pw'>
-            <legend>Change your password</legend>
-            <input class='change' type='password' name='passwords[old]' placeholder='Old Password'></input>
-            <input class='change' type='password' name='passwords[new]]' placeholder='New Password'></input>
-            <input type='submit' value="Change Your Password"></input> 
-         </fieldset>
-      </form>
 
 <!--the game board begins here-->
       <div hidden='hidden' id='game-board' class="container">

@@ -36,7 +36,11 @@
 //change password function
    const onChangePw = function (event) {
       event.preventDefault()
-      api.changePw(getFormFields(event.target))
+      let passObj = {}
+      passObj.passwords = {}
+      passObj.passwords.old = document.getElementById("old-pw").value
+      passObj.passwords.new = $('#new-pw').val()
+      api.changePw(passObj)
          .then(ui.onChangePwSuccess)
          .catch(ui.onChangePwFail)
 //resetting the forms on any button click
@@ -56,7 +60,7 @@
    const onPassChange = function (event) {
       event.preventDefault()
       $('.pass-logout').attr('hidden', 'hidden')
-      $('.change-pw').removeAttr('hidden')
+      $('#change-pw').removeAttr('hidden')
    }
 
 module.exports = {

@@ -31,8 +31,9 @@ $(() => {
 //actual event handlers for sign up, in, out, and PW change
    $('#sign-up').on('submit', userCreate.onSignUp)
    $('#sign-in').on('submit', userCreate.onSignIn)
-   $('#change-pw').on('submit', userCreate.onChangePw)
+   $('#change-pw-button').on('click', userCreate.onChangePw)
    $('#sign-out').on('click', userCreate.onSignOut)
+   $('#cancel-pw').on('click', userCreate.onPassCancel)
    $('#pass-change-show').on('click', userCreate.onPassChange)
    $('#new-game').on('submit', gamePlay.newGame)
 })

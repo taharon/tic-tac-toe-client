@@ -74,6 +74,7 @@ const onChangePwSuccess = (data) => {
   $('#sign-out').attr('hidden','hidden')
   $('#sign-up').removeAttr('hidden')
   $('#sign-in').removeAttr('hidden')
+  $('.hide-user').attr('hidden', 'hidden')
   api.signOut()
 }
 
