@@ -9,6 +9,7 @@
 const store = require('./store.js')
 const gamePlay = require('./game/events.js')
 const userCreate = require('./auth/events.js')
+const superGame = require('./super/events.js')
 //if user doesn't currently exist, don't show change password or sign-out
 if (!store.user){
    $('#change-pw').attr('hidden','hidden')
@@ -25,6 +26,11 @@ if (store.user){
    $('#sign-out').removeAttr('hidden')
 }
 
+const problem = (event) => {
+   event.preventDefault();
+   $('#message').text("This doesn't do anything... Yet!")
+}
+
 //when jquery loads
 $(() => {
 //importing authorization events
@@ -37,4 +43,7 @@ $(() => {
    $('#pass-change-show').on('click', userCreate.onPassChange)
    $('#new-game').on('submit', gamePlay.newGame)
    $('#cancel-change-pw').on('click', userCreate.onPassCancel)
+//super tic-tac-toe
+   $('.super').on('click', problem)
+//   $('.super').on('click', superGame.onInstructions)
 })

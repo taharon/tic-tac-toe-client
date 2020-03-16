@@ -94,7 +94,7 @@
       <h2 style='text-align: center' id='message'>Welcome! Please log in to play Tic-Tac-Toe.</h2>
    <main>
 <!--the game board begins here-->
-      <div hidden='hidden' id='game-board' class="container">
+      <div hidden='hidden' id='game-board' class="reg container">
          <div class="row">
             <div data-coords="0 0" class="col-4 game-box border-top-0 border-left-0"></div>
             <div data-coords="1 0" class="col-4 game-box border-top-0"></div>
@@ -111,7 +111,7 @@
             <div data-coords="2 2" class="col-4 game-box border-bottom-0 border-right-0"></div>
          </div>
       </div>
-      <div id='demo-board' class="container">
+      <div id='demo-board' class="reg container">
          <div class="row">
             <div class="col-4 demo-box border-top-0 border-left-0">X</div>
             <div class="col-4 demo-box border-top-0">O</div>
@@ -126,6 +126,18 @@
             <div class="col-4 border-bottom-0 demo-box border-left-0"></div>
             <div class="col-4 border-bottom-0 demo-box"></div>
             <div class="col-4 border-bottom-0 demo-box border-right-0 winner-color">X</div>
+         </div>
+      </div>
+      <div class="container">
+         <div class="row">
+            <div class="col-2"></div>
+            <button class='super col-8 border border-dark nav-font rounded-pill'>SUPER</button>
+            <div class="col-2"></div>
+         </div>
+         <div hidden='hidden' id='super-instructions'>Super tic-tac-toe is played in a 3x3 grid of grids. Each player makes a move in a normal tic-tac-toe grid, however their move will send their opponent to the corresponding game on the 3 x 3 board. For example, if a player chooses to place an X in the middle square of the top-left grid, the next player must place an O in the tic-tac-toe grid in the center of the 3 x 3 super-grid.</div>
+         <div id='instructions-cont' hidden='hidden' class="row">
+            <button class='super-cont col-6 border border-dark nav-font rounded-pill'>I understand, let's play!</button>
+            <button class='super-cancel col-6 border border-dark nav-font rounded-pill'>No thanks, I'm out.</button>
          </div>
       </div>
       </main>
