@@ -13,13 +13,13 @@
     </head>
     <body>
        <nav class="navbar-expand">
-          <div class="collapse navbar-collapse bg-info">
+          <div class="collapse navbar-collapse bg-color">
             <div id='test' class="container">
                <div class="row">
-                  <div class="col-12 box bg-info border-0">Tic-Tac-Toe</div>
+                  <div class="col-12 box bg-color border-0">Tic-Tac-Toe</div>
                </div>
                <div class="row">
-                  <div class="col-6 box bg-info border-0 boxsize">
+                  <div class="col-6 box bg-color border-0 boxsize">
                      <form class='container' id='sign-up'>
                            <div class="extra-row row">
                               <input class='nav-font col-4' type='text' name='credentials[email]' placeholder='Email'></input>
@@ -27,34 +27,34 @@
                               <input class='nav-font col-4' type='password' name='credentials[password_confirmation]' placeholder='Password again'></input>
                            </div>
                            <div class="extra-row row mt-3">
-                              <div class='nav-font col-2 bg-info'></div>
+                              <div class='nav-font col-2 bg-color'></div>
                               <input class='border border-dark nav-font col-8 rounded-pill' type='submit' value="Sign Up"></input>
-                              <div class='nav-font col-2 bg-info'></div>
+                              <div class='nav-font col-2 bg-color'></div>
                            </div>
                      </form>
                      <div class="container hide-user" hidden='hidden'>
                         <!--Username-->
                         <div style='margin: -15px 0 0 0' class="row extra-row hide-user" hidden="hidden">
-                           <div class="nav-font col-2 bg-info"></div>
-                           <div class="username bg-info col-8" style='font-size: .6em; text-align: center;'></div>
-                           <div class="nav-font col-2 bg-info"></div>
+                           <div class="nav-font col-2 bg-color"></div>
+                           <div class="username bg-color col-8" style='font-size: .6em; text-align: center;'></div>
+                           <div class="nav-font col-2 bg-color"></div>
                         </div>
                         <!--Stats-->
                         <div class="row extra-row mt-3 nav-font hide-user" hidden="hidden">
-                           <div class="col-1 bg-info"></div>
+                           <div class="col-1 bg-color"></div>
                            <div hidden='hidden' class='col-4' id='total-games'></div>
-                           <div class="col-2 bg-info"></div>
+                           <div class="col-2 bg-color"></div>
                         <!--New Game-->
                            <form hidden='hidden' class='col-4' id='new-game'>
                                  <input type='submit' class='full border border-dark rounded-pill' value="New Game"></input>
                            </form>
-                           <div class="col-1 bg-info"></div>
+                           <div class="col-1 bg-color"></div>
                         </div>
                      </div>
                   </div>
                   <!--Spacing for second half of nav-->
-                  <div class="col-2 box bg-info border-0 boxsize"></div>
-                  <div class="col-4 box bg-info border-0 boxsize">
+                  <div class="col-2 box bg-color border-0 boxsize"></div>
+                  <div class="col-4 box bg-color border-0 boxsize">
                      <!--Sign in stuff-->
                      <form id='sign-in'>
                            <div class="extra-row row">
@@ -62,9 +62,9 @@
                               <input class='nav-font col-6' type='password' name='credentials[password]' placeholder='Password'></input>
                            </div>
                            <div class="extra-row row mt-3">
-                              <div class='nav-font col-2 bg-info'></div>
+                              <div class='nav-font col-2 bg-color'></div>
                               <input class='border border-dark nav-font col-8 rounded-pill' type='submit' value="Log In"></input>
-                              <div class='nav-font col-2 bg-info'></div>
+                              <div class='nav-font col-2 bg-color'></div>
                            </div>
                      </form>
                      <!--Sign out, Show change pw-->
@@ -92,7 +92,7 @@
           </div>
        </nav>
       <h2 style='text-align: center' id='message'></h2>
-
+   <main>
 <!--the game board begins here-->
       <div hidden='hidden' id='game-board' class="container">
          <div class="row">
@@ -128,5 +128,6 @@
             <div class="col-4 border-bottom-0 box border-right-0 bg-primary">X</div>
          </div>
       </div>
+      </main>
     </body>
 </html>
