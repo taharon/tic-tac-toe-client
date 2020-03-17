@@ -26,9 +26,18 @@ body{
   justify-content: center;
 }
 
+.title {
+   height: 80px;
+}
+
 #test{
 //   margin: 0 1em;
    width: 100%;
+}
+
+.username{
+   font-size: .6em;
+   text-align: center;
 }
 
 .nav-font{
@@ -40,13 +49,8 @@ body{
    height: 40%;
 }
 
-#sign-up, #change-pw, #sign-in{
+#sign-up, #change-pw, #sign-in, #sign-out{
    height: 100%;
-}
-
-#sign-out{
-   height: 100%;
-   width: 100%;
 }
 
 .full{
@@ -70,7 +74,7 @@ body{
    background-color: #81c8d3;
 }
 
-.super{
+.buttonSize{
    height: 50px;
    font-size: 30px;
 }
@@ -94,7 +98,7 @@ body{
 .tiny-box {
    align-items: center;
    background-color: $body-bg-color;
-   border: 3px solid $black;
+   border: 1px solid $black;
    color: $font-color;
    font-weight: 700;
    font-size: 60px;

@@ -16,7 +16,7 @@
          <div class="collapse navbar-collapse nav-color">
             <div id='test' class="container">
                <div class="row">
-                  <div style='height: 80px;' class="title col-12 box nav-color border-0">Tic-Tac-Toe</div>
+                  <div class="title col-12 box nav-color border-0">Tic-Tac-Toe</div>
                </div>
                <div class="row">
                   <div class="col-6 box nav-color border-0">
@@ -36,7 +36,7 @@
                         <!--Username-->
                         <div style='margin: -15px 0 0 0' class="row extra-row hide-user" hidden="hidden">
                            <div class="nav-font col-2 nav-color"></div>
-                           <div class="username nav-color col-8" style='font-size: .6em; text-align: center;'></div>
+                           <div class="username nav-color col-8"></div>
                            <div class="nav-font col-2 nav-color"></div>
                         </div>
                         <!--Stats-->
@@ -133,7 +133,7 @@
             <div hidden='hidden' id='super-s' class="container">
                <div class="row">
                   <div class="col-2"></div>
-                  <button id='super-start' class='super col-8 border border-dark nav-font rounded-pill'>SUPER</button>
+                  <button id='super-start' class='buttonSize col-8 border border-dark nav-font rounded-pill'>SUPER</button>
                   <div class="col-2"></div>
                </div>
             </div>
@@ -141,14 +141,32 @@
          <div hidden='hidden' class="container" id='super-inst'>
             <div>Super tic-tac-toe is played in a 3x3 grid of grids. Each player makes a move in a normal tic-tac-toe grid, however their move will send their opponent to the corresponding game on the 3 x 3 board. For example, if a player chooses to place an X in the middle square of the top-left grid, the next player must place an O in the tic-tac-toe grid in the center of the 3 x 3 super-grid.</div>
             <div class="row">
-               <button id='super-cont' class='super col-6 border border-dark nav-font rounded-pill'>I understand, let's play!</button>
-               <button id='super-cancel' class='super col-6 border border-dark nav-font rounded-pill'>No thanks, I'm out.</button>
+               <button id='super-cont' class='buttonSize col-6 border border-dark nav-font rounded-pill'>I understand, let's play!</button>
+               <button id='super-cancel' class='buttonSize col-6 border border-dark nav-font rounded-pill'>No thanks, I'm out.</button>
             </div>
          </div>
+         <!--Super game starts here-->
+         <!--Zoom for super game-->
          <div id="super-game" >
-            <div class="container" style='max-width: none;'>
+            <div class="container" id='super-zoom'>
                <div class="row">
-                  <div class="col-4">
+                  <button id='super-sm-zoom' class='buttonSize col-5 border border-dark nav-font rounded-pill'>Zoom in on current board.</button>
+                  <div class="col-2"></div>
+                  <button id='super-bg-zoom' class='buttonSize col-5 border border-dark nav-font rounded-pill'>Zoom in on full board.</button>
+               </div>
+            </div>
+            <!--Return to super game-->
+            <div class="container" hidden='hidden' id='super-return'>
+               <div class="row">
+                  <div class="col-2"></div>
+                  <button class='buttonSize col-8 border border-dark nav-font rounded-pill'>Return to game</button>
+                  <div class="col-2"></div>
+               </div>
+            </div> </br>
+            <!--Super Game Board-->
+            <div class="container" style='max-width: 1300px;'>
+               <div class="row">
+                  <div id='super-sm-board' class="col-4">
                      <div class="row">
                         <div data-coords="0 0" class="col-4 box border-top-0 border-left-0"></div>
                         <div data-coords="1 0" class="col-4 box border-top-0"></div>
@@ -166,7 +184,7 @@
                      </div>
                   </div>
                   <div class="col-1"></div>
-                  <div class="col-7">
+                  <div id='super-bg-board' class="col-7">
                      <div class="row">
                         <div data-coords="0 0" class="col-4 super-box border-top-0 border-left-0">                  
                            <div class="col-12">

@@ -14,16 +14,30 @@
    }
 
    const superContinue = event => {
-       event.preventDefault()
-       $('#new-game').attr('id','new-game-super')
-       $('#new-game-super').removeAttr('id','new-game')
-       $('#super-inst').attr('hidden','hidden')
-       $('#super-game').removeAttr('hidden','hidden')
-       
+      event.preventDefault()
+      ui.onSuperContinue()
+   }
+
+   const superSmallZoom = event => {
+      event.preventDefault()
+      ui.onSuperSmallZoom()
+   }
+
+   const superBigZoom = event => {
+      event.preventDefault()
+      ui.onSuperBigZoom()
+   }
+
+   const returnToGame = event => {
+      event.preventDefault()
+      ui.onReturnToGame()
    }
 
 module.exports = {
    instructionsClick,
    superCancel,
-   superContinue
+   superContinue,
+   superSmallZoom,
+   superBigZoom,
+   returnToGame
 }
