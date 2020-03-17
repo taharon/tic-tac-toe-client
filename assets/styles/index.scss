@@ -14,7 +14,7 @@ body{
    font-family: 'Acme', sans-serif;
 }
 
-.box {
+.box, .super-reg-box {
   align-items: center;
   background-color: $body-bg-color;
   border: 3px solid $black;
