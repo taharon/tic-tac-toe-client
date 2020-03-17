@@ -1,5 +1,6 @@
 'use strict'
    const player = require('../game/gameData.js')
+   const superPlayer = require('./superData.js')
    let messageText
 
    const onInstructionsClick = () => {
@@ -25,8 +26,6 @@
    }
 
    const onSuperContinue = () => {
-      $('#new-game').attr('id','new-game-super')
-      $('#new-game-super').removeAttr('id','new-game')
       $('#super-inst').attr('hidden','hidden')
       $('#super-game').removeAttr('hidden','hidden')
    }
@@ -50,11 +49,30 @@
       $('#super-return').attr('hidden','hidden')  
    }
 
+   const onReturnToRegular = () => {
+      if (player.winner.length) {
+         $('#super-game').attr('hidden','hidden')
+         $('#reg-game').removeAttr('hidden')
+         let who = player.turn%2===0 ? 'X' : 'O'
+         $('#message').removeClass()
+         $('#message').addClass('success')
+         $('#message').text(`Welcome back to your game. It is player ${who}'s turn.`)
+      }
+      else{
+         $('#super-game').attr('hidden','hidden')
+         $('#reg-game').removeAttr('hidden')
+         $('#message').removeClass()
+         $('#message').addClass('success')
+         $('#message').text('Please click New Game to begin.')
+      }
+   }
+
    module.exports={
       onInstructionsClick,
       onSuperCancel,
       onSuperSmallZoom,
       onSuperBigZoom,
       onSuperContinue,
-      onReturnToGame
+      onReturnToGame,
+      onReturnToRegular
    }
