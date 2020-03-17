@@ -27,7 +27,7 @@
 
 //click a box function
    const boxClicked = function (event){
-//gets the coordinates for a 2d array based on the data atribute of the game board divs, the map transforms the string to integer
+//gets the coordinates for a 2d array based on the data attribute of the game board divs, the map transforms the string to integer
       let boxCoords = $(event.target).data().coords.split(' ').map(str => +str)
       let x = boxCoords[0]
       let y = boxCoords[1]

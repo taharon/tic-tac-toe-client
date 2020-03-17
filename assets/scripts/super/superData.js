@@ -1,7 +1,9 @@
 module.exports ={
    turn: 0,
-   boardState: [],
-   winner: [],
+   superBoardState: [],
+   superWinner: [],
+   actualWinner: [],
+   lastPlay: 0,
    boxSize: 3
   }
   
