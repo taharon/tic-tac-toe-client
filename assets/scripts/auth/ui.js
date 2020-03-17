@@ -14,7 +14,7 @@ const onSignUpFail = error => {
   $('#message').addClass('failure') 
 }
 const onSignInSuccess = (data) => {
-  $('#message').text('Signed in successfully')
+  $('#message').text('Signed in successfully, click New Game to start a new game')
   $('#message').removeClass()
   $('#message').addClass('success')
 //after a login, save the user data so the token can be retrieved
@@ -34,6 +34,7 @@ const onSignInSuccess = (data) => {
   $('.hide-user').removeAttr('hidden')
   $('#pass-logout').removeAttr('hidden')
   $('.username').text(store.user.email)
+  $('#super-s').removeAttr('hidden')
 }
 
 const onSignInFail = error => {
@@ -58,6 +59,7 @@ const onSignOutSuccess = () => {
   $('#demo-board').removeAttr('hidden')
   $('.hide-user').attr('hidden', 'hidden')
   $('#pass-logout').attr('hidden', 'hidden')
+  $('#super-s').attr('hidden','hidden')
 }
 
 const onSignOutFail = () => {
@@ -71,12 +73,12 @@ const onChangePwSuccess = (data) => {
   $('#message').text('Password changed successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
-  $('#change-pw').attr('hidden','hidden')
-  $('#sign-out').attr('hidden','hidden')
-  $('#sign-up').removeAttr('hidden')
-  $('#sign-in').removeAttr('hidden')
-  $('.hide-user').attr('hidden', 'hidden')
-  api.signOut()
+//  $('#change-pw').attr('hidden','hidden')
+//  $('#sign-out').attr('hidden','hidden')
+//  $('#sign-up').removeAttr('hidden')
+//  $('#sign-in').removeAttr('hidden')
+//  $('.hide-user').attr('hidden', 'hidden')
+//  api.signOut()
 }
 
 const onChangePwFail = error => {

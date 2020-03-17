@@ -44,6 +44,8 @@ $(() => {
    $('#new-game').on('submit', gamePlay.newGame)
    $('#cancel-change-pw').on('click', userCreate.onPassCancel)
 //super tic-tac-toe
-   $('.super').on('click', problem)
-//   $('.super').on('click', superGame.onInstructions)
+//   $('.super').on('click', problem)
+   $('#super-start').on('click', superGame.instructionsClick)
+   $('#super-cancel').on('click',superGame.superCancel)
+   $('#super-cont').on('click', superGame.superContinue)
 })

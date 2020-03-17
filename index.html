@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html>
     <head>
-      <title>Example</title>
+      <title>Tal's Tic-Tac-Toe!</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -10,10 +10,10 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-       <nav class="navbar-expand">
-          <div class="collapse navbar-collapse nav-color">
+   </head>
+   <body>
+      <nav class="navbar-expand">
+         <div class="collapse navbar-collapse nav-color">
             <div id='test' class="container">
                <div class="row">
                   <div style='height: 80px;' class="title col-12 box nav-color border-0">Tic-Tac-Toe</div>
@@ -91,55 +91,117 @@
             </div>
           </div>
        </nav>
-      <h2 style='text-align: center' id='message'>Welcome! Please log in to play Tic-Tac-Toe.</h2>
-   <main>
+      <main>
+         <h2 style='text-align: center' id='message'>Welcome! Please log in to play Tic-Tac-Toe.</h2>
 <!--the game board begins here-->
-      <div hidden='hidden' id='game-board' class="reg container">
-         <div class="row">
-            <div data-coords="0 0" class="col-4 game-box border-top-0 border-left-0"></div>
-            <div data-coords="1 0" class="col-4 game-box border-top-0"></div>
-            <div data-coords="2 0" class="col-4 game-box border-top-0 border-right-0"></div>
+         <!--<div id='reg-game'>-->
+         <div id='reg-game' hidden='hidden'>
+            <div hidden='hidden' id='game-board' class="container">
+               <div class="row">
+                  <div data-coords="0 0" class="col-4 game-box border-top-0 border-left-0"></div>
+                  <div data-coords="1 0" class="col-4 game-box border-top-0"></div>
+                  <div data-coords="2 0" class="col-4 game-box border-top-0 border-right-0"></div>
+               </div>
+               <div class="row">
+                  <div data-coords="0 1" class="col-4 game-box border-left-0"></div>
+                  <div data-coords="1 1" class="col-4 game-box"></div>
+                  <div data-coords="2 1" class="col-4 game-box border-right-0"></div>
+               </div>
+               <div class="row">
+                  <div data-coords="0 2" class="col-4 game-box border-bottom-0 border-left-0"></div>
+                  <div data-coords="1 2" class="col-4 game-box border-bottom-0"></div>
+                  <div data-coords="2 2" class="col-4 game-box border-bottom-0 border-right-0"></div>
+               </div>
+            </div>
+            <div id='demo-board' class="container">
+               <div class="row">
+                  <div class="col-4 demo-box border-top-0 border-left-0">X</div>
+                  <div class="col-4 demo-box border-top-0">O</div>
+                  <div class="col-4 demo-box border-top-0 border-right-0 winner-color">X</div>
+               </div>
+               <div class="row">
+                  <div class="col-4 demo-box border-left-0">O</div>
+                  <div class="col-4 demo-box">O</div>
+                  <div class="col-4 demo-box border-right-0 winner-color">X</div>
+               </div>
+               <div class="row">
+                  <div class="col-4 border-bottom-0 demo-box border-left-0"></div>
+                  <div class="col-4 border-bottom-0 demo-box"></div>
+                  <div class="col-4 border-bottom-0 demo-box border-right-0 winner-color">X</div>
+               </div>
+            </div>
+            <div hidden='hidden' id='super-s' class="container">
+               <div class="row">
+                  <div class="col-2"></div>
+                  <button id='super-start' class='super col-8 border border-dark nav-font rounded-pill'>SUPER</button>
+                  <div class="col-2"></div>
+               </div>
+            </div>
          </div>
-         <div class="row">
-            <div data-coords="0 1" class="col-4 game-box border-left-0"></div>
-            <div data-coords="1 1" class="col-4 game-box"></div>
-            <div data-coords="2 1" class="col-4 game-box border-right-0"></div>
+         <div hidden='hidden' class="container" id='super-inst'>
+            <div>Super tic-tac-toe is played in a 3x3 grid of grids. Each player makes a move in a normal tic-tac-toe grid, however their move will send their opponent to the corresponding game on the 3 x 3 board. For example, if a player chooses to place an X in the middle square of the top-left grid, the next player must place an O in the tic-tac-toe grid in the center of the 3 x 3 super-grid.</div>
+            <div class="row">
+               <button id='super-cont' class='super col-6 border border-dark nav-font rounded-pill'>I understand, let's play!</button>
+               <button id='super-cancel' class='super col-6 border border-dark nav-font rounded-pill'>No thanks, I'm out.</button>
+            </div>
          </div>
-         <div class="row">
-            <div data-coords="0 2" class="col-4 game-box border-bottom-0 border-left-0"></div>
-            <div data-coords="1 2" class="col-4 game-box border-bottom-0"></div>
-            <div data-coords="2 2" class="col-4 game-box border-bottom-0 border-right-0"></div>
+         <div id="super-game" >
+            <div class="container" style='max-width: none;'>
+               <div class="row">
+                  <div class="col-4">
+                     <div class="row">
+                        <div data-coords="0 0" class="col-4 box border-top-0 border-left-0"></div>
+                        <div data-coords="1 0" class="col-4 box border-top-0"></div>
+                        <div data-coords="2 0" class="col-4 box border-top-0 border-right-0"></div>
+                     </div>
+                     <div class="row">
+                        <div data-coords="0 1" class="col-4 box border-left-0"></div>
+                        <div data-coords="1 1" class="col-4 box"></div>
+                        <div data-coords="2 1" class="col-4 box border-right-0"></div>
+                     </div>
+                     <div class="row">
+                        <div data-coords="0 2" class="col-4 box border-bottom-0 border-left-0"></div>
+                        <div data-coords="1 2" class="col-4 box border-bottom-0"></div>
+                        <div data-coords="2 2" class="col-4 box border-bottom-0 border-right-0"></div>
+                     </div>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="col-7">
+                     <div class="row">
+                        <div data-coords="0 0" class="col-4 super-box border-top-0 border-left-0">
+                           <div class="row">
+                              <div data-coords="0 0" class="col-4 tiny-box border-top-0 border-left-0"></div>
+                              <div data-coords="1 0" class="col-4 tiny-box border-top-0"></div>
+                              <div data-coords="2 0" class="col-4 tiny-box border-top-0 border-right-0"></div>
+                           </div>
+                           <div class="row">
+                              <div data-coords="0 1" class="col-4 tiny-box border-left-0"></div>
+                              <div data-coords="1 1" class="col-4 tiny-box"></div>
+                              <div data-coords="2 1" class="col-4 tiny-box border-right-0"></div>
+                           </div>
+                           <div class="row">
+                              <div data-coords="0 2" class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                              <div data-coords="1 2" class="col-4 tiny-box border-bottom-0"></div>
+                              <div data-coords="2 2" class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                           </div>
+                        </div>
+                        <div data-coords="1 0" class="col-4 super-box border-top-0"></div>
+                        <div data-coords="2 0" class="col-4 super-box border-top-0 border-right-0"></div>
+                     </div>
+                     <div class="row">
+                        <div data-coords="0 1" class="col-4 super-box border-left-0"></div>
+                        <div data-coords="1 1" class="col-4 super-box"></div>
+                        <div data-coords="2 1" class="col-4 super-box border-right-0"></div>
+                     </div>
+                     <div class="row">
+                        <div data-coords="0 2" class="col-4 super-box border-bottom-0 border-left-0"></div>
+                        <div data-coords="1 2" class="col-4 super-box border-bottom-0"></div>
+                        <div data-coords="2 2" class="col-4 super-box border-bottom-0 border-right-0"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
-      </div>
-      <div id='demo-board' class="reg container">
-         <div class="row">
-            <div class="col-4 demo-box border-top-0 border-left-0">X</div>
-            <div class="col-4 demo-box border-top-0">O</div>
-            <div class="col-4 demo-box border-top-0 border-right-0 winner-color">X</div>
-         </div>
-         <div class="row">
-            <div class="col-4 demo-box border-left-0">O</div>
-            <div class="col-4 demo-box">O</div>
-            <div class="col-4 demo-box border-right-0 winner-color">X</div>
-         </div>
-         <div class="row">
-            <div class="col-4 border-bottom-0 demo-box border-left-0"></div>
-            <div class="col-4 border-bottom-0 demo-box"></div>
-            <div class="col-4 border-bottom-0 demo-box border-right-0 winner-color">X</div>
-         </div>
-      </div>
-      <div class="container">
-         <div class="row">
-            <div class="col-2"></div>
-            <button class='super col-8 border border-dark nav-font rounded-pill'>SUPER</button>
-            <div class="col-2"></div>
-         </div>
-         <div hidden='hidden' id='super-instructions'>Super tic-tac-toe is played in a 3x3 grid of grids. Each player makes a move in a normal tic-tac-toe grid, however their move will send their opponent to the corresponding game on the 3 x 3 board. For example, if a player chooses to place an X in the middle square of the top-left grid, the next player must place an O in the tic-tac-toe grid in the center of the 3 x 3 super-grid.</div>
-         <div id='instructions-cont' hidden='hidden' class="row">
-            <button class='super-cont col-6 border border-dark nav-font rounded-pill'>I understand, let's play!</button>
-            <button class='super-cancel col-6 border border-dark nav-font rounded-pill'>No thanks, I'm out.</button>
-         </div>
-      </div>
       </main>
-    </body>
+   </body>
 </html>

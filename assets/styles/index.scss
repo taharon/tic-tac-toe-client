@@ -75,8 +75,32 @@ body{
    font-size: 30px;
 }
 
-#super-instructions{
-   font-size: 40px;
+#super-inst{
+   font-size: 30px;
+}
+
+.super-box {
+   align-items: center;
+   background-color: $body-bg-color;
+   border: 3px solid $black;
+   color: $font-color;
+   font-weight: 700;
+   font-size: 60px;
+   display: flex;
+   height: 200px;
+   justify-content: center;
+}
+
+.tiny-box {
+   align-items: center;
+   background-color: $body-bg-color;
+   border: 3px solid $black;
+   color: $font-color;
+   font-weight: 700;
+   font-size: 60px;
+   display: flex;
+   height: 20px;
+   justify-content: center;
 }
 
 .game-box, .demo-box {
