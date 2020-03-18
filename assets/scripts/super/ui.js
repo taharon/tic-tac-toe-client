@@ -67,6 +67,59 @@
       }
    }
 
+  // let boxData = `[data-coords=\"${i} ${player.boxSize-i-1}\"]`
+   //$(boxData).addClass('winner-color')
+
+
+   const onSuperPlayerClicked = (event) => {
+      let newBoxCoords = $(event.target).data().coords.split(' ').map(str => +str)
+      let x = newBoxCoords[0]
+      let y = newBoxCoords[1]
+      if (player.turn%2 === 0){
+         $(event.target).text('X')
+      }
+      else{
+         $(event.target).text('O')
+      }
+   }
+
+   const onFirstBox = () => {
+      let startCoords = superPlayer.lastPlay.split(' ').map(str => +str)
+      let x = startCoords[0]
+      let y = startCoords[1]
+      if ((y===x)&&(y===1)){
+         $('#message').removeClass()
+         $('#message').text("X picked the middle box. It is X's turn to play")
+         return
+      }
+      let row
+      let column
+      switch(x){
+         case 0:
+            row = 'top'
+            break;
+         case 1:
+            row = 'middle'
+            break;
+         case 2:
+            row = 'bottom'
+            break;
+      }
+      switch(y){
+         case 0:
+            column = 'left'
+            break;
+         case 1:
+            column = 'middle'
+            break;
+         case 2:
+            column = 'right'
+            break;
+      }
+      $('#message').removeClass()
+      $('#message').text(`X picked the ${row} ${column} box. It is X's turn to play`)
+   }
+
    module.exports={
       onInstructionsClick,
       onSuperCancel,
@@ -74,5 +127,6 @@
       onSuperBigZoom,
       onSuperContinue,
       onReturnToGame,
-      onReturnToRegular
+      onReturnToRegular,
+      onFirstBox
    }

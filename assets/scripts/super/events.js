@@ -44,15 +44,23 @@
    }
 
    const newSuperGame = event => {
+      event.preventDefault()
 //turn off the event handlers on each game-box when a new game is started (in case someone clicks new game without finishing a game)
       $('.super-reg-box').off('click', superBoxClicked)
       $('.super-reg-box').removeClass('winner-color')     
 //start a game
       $('#message').removeClass()
       $('#message').addClass('success')
-      $('#message').text("It is X's turn!")
-      logic.superSetUp()
+      $('#message').text("It is X's turn! Please select a box to start in.")
+//      logic.superSetUp()
+   }
+
+   const firstBox = event => {
+      event.preventDefault()
       $('.super-reg-box').on('click', superBoxClicked)
+      player.lastPlay = $(event.currentTarget).data().coords
+      $('.super-box').off('click', firstBox)
+      ui.onFirstBox()      
    }
 
    const superBoxClicked = function (event){
@@ -66,12 +74,12 @@
          let whoseTurn = player.turn%2 === 0 ? 'X' : 'O';
          player.superBoardState[currentBoxIndex][x][y] = whoseTurn
 //did someone win?
-         logic.superWinnerUpdate(boxCoords)
+//         logic.superWinnerUpdate(newBoxCoords)
          ui.onSuperPlayerClicked(event)
          hoseTurn = player.turn%2 !== 0 ? 'X' : 'O';
          $('#message').addClass('success')         
          $('#message').text(`It is ${whoseTurn}\'s turn!`)
-         if(logic.superWinnerWinner()){ return }
+ //        if(logic.superWinnerWinner()){ return }
 //if not, continue playing
          player.turn++
          player.lastPlay = $(event.target).data().coords
@@ -91,5 +99,14 @@ module.exports = {
    superBigZoom,
    returnToGame,
    returnToRegular,
-   newSuperGame
+   newSuperGame,
+   firstBox
 }
+
+
+
+// Currently testing a few things:
+//treat all the boxes in the super box as a list and just calculate which box to put an x in
+//When winning a game on reg tic tac toe then going to super, can't return after zooming.
+//when returning to a game from super tic tac toe, if the regular game was won and then I left super, it'll currently return
+//     and make the player think the game is still going

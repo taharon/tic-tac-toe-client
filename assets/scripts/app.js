@@ -51,4 +51,5 @@ $(() => {
    $('#super-bg-zoom').on('click', superGame.superBigZoom)
    $('#super-return').on('click', superGame.returnToGame)
    $('#return-reg').on('click', superGame.returnToRegular)
+   $('.super-box').on('click', superGame.firstBox)
 })
