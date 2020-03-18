@@ -16,11 +16,11 @@ Visual Studio Code (to develop)
 ## Wireframes
 I began with mockups of both the regular tic-tac-toe client as well as the super tic-tac-toe client. I knew that I would need login and signup buttons, a landing page for the user where they can start a new game, and the ability to log out and change password.
 
-![Wireframe for regular tic-tac-toe.][reg_wireframe]
+![Wireframe for regular tic-tac-toe.](./public/images/Regular_TTT_wireframe.jpg)
 
  I later added the ability to switch to a variant of tic-tac-toe known as super tic-tac-toe, which is played with a 3x3 grid of tic-tac-toe games. I knew I would need some initial instructions as well as the game boards and the ability to switch back to regular tic-tac-toe. I also wanted to be able to zoom in on either the current game board or the super game board, and then return to the game.
 
- ![Wireframe for super tic-tac-toe.][super_wireframe]
+ ![Wireframe for super tic-tac-toe.](./public/images/Super_TTT_wireframe.jpg)
 
 ## User Stories
 I created a basic set of user stories for the bare minimum a user should be able to do in order to play tic-tac-toe with my app:  
@@ -53,5 +53,5 @@ Allow users to load unfinished games
 Add game logic for super tic-tac-toe  
 Add better instructions for how to play super tic-tac-toe  
 
-[reg-wireframe]: ./public/images/Regular_TTT_wireframe.jpg
+[reg-wireframe]: 
 [super-wireframe]: ./public/images/Super_TTT_wireframe.jpg
