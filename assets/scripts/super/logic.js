@@ -15,7 +15,6 @@
             superPlayer.superBoardState[i][j] = new Array(3)
          }
       }
-      console.log(superPlayer.superBoardState)
 //initialize the array that checks for winner in each mini board
       superPlayer.superWinner = new Array(9)
       for (let i = 0; i < 9; i++){

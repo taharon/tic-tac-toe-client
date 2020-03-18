@@ -3,6 +3,7 @@
    const gamePlay = require('./events.js')
    const ui = require('./ui')
 
+
    const setUp = function (gameData){
 //default to x going first
       player.turn = 0
@@ -19,7 +20,7 @@
          player.winner[i] = new Array(2).fill(0)
       }
       player.gameId = gameData.game.id 
-      $('.container').off('click', gamePlay.newGame)
+      $('#demo-board').off('click', gamePlay.newGame)
    }
 
 //check if someone won

@@ -60,7 +60,6 @@ const superContinue = event => {
 
    const firstBox = event => {
       event.preventDefault()
-      console.log('trigger first box')
       $('.super-reg-box').on('click', superBoxClicked)
       superPlayer.lastPlay = $(event.currentTarget).data().coords
       $('.super-box').off('click', firstBox)
@@ -74,12 +73,9 @@ const superContinue = event => {
       let lastPlayedBox = superPlayer.lastPlay.split(' ').map(str=>+str)[1]*3 + superPlayer.lastPlay.split(' ').map(str=>+str)[0]
       let x = newBoxCoords[0]
       let y = newBoxCoords[1]
-      console.log(lastPlayedBox, x, y)
-      console.log(superPlayer.superBoardState)
 //if the clicked spot is empty, put an X or O in it depending on superPlayer.turn, update the winner array and game board, check if someone won, and if they didn't change superPlayer.turn
       if (!superPlayer.superBoardState[lastPlayedBox][x][y]){
          let whoseTurn = superPlayer.turn%2 === 0 ? 'X' : 'O';
-         console.log('whose turn is it', whoseTurn, superPlayer.turn)
          superPlayer.superBoardState[lastPlayedBox][x][y] = whoseTurn
 //did someone win?
 //         logic.superWinnerUpdate(newBoxCoords)
@@ -113,9 +109,6 @@ module.exports = {
 }
 
 
-
-// Currently testing a few things:
-//treat all the boxes in the super box as a list and just calculate which box to put an x in
 //When winning a game on reg tic tac toe then going to super, can't return after zooming.
 //when returning to a game from super tic tac toe, if the regular game was won and then I left super, it'll currently return
 //     and make the player think the game is still going
