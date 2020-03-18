@@ -116,7 +116,7 @@
       let y = startCoords[1]
       if ((y===x)&&(y===1)){
          $('#message').removeClass()
-         $('#message').text("X picked the middle box. It is X's turn to play")
+         $('#message').text("X picked the middle box. It is X's turn to play.")
          return
       }
       let row
@@ -144,7 +144,7 @@
             break;
       }
       $('#message').removeClass()
-      $('#message').text(`X picked the ${row} ${column} box. It is X's turn to play`)
+      $('#message').text(`X picked the ${row} ${column} box. It is X's turn to play.`)
    }
 
    module.exports={

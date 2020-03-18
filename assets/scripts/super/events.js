@@ -60,7 +60,7 @@ const superContinue = event => {
 ////start a game
       $('#message').removeClass()
       $('#message').addClass('success')
-      $('#message').text("It is X's turn! Please select a box to start in.")
+      $('#message').text("Player X begins. Please select a box to start in.")
       superLogic.superSetUp()
    }
 
