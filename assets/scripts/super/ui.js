@@ -28,6 +28,9 @@
    const onSuperContinue = () => {
       $('#super-inst').attr('hidden','hidden')
       $('#super-game').removeAttr('hidden','hidden')
+      $('#message').removeClass()
+      $('#message').addClass('success')
+      $('#message').text('Please click New Game to begin.')
    }
 
    const onSuperBigZoom = () =>{
@@ -118,7 +121,7 @@
       }
       let row
       let column
-      switch(x){
+      switch(y){
          case 0:
             row = 'top'
             break;
@@ -129,7 +132,7 @@
             row = 'bottom'
             break;
       }
-      switch(y){
+      switch(x){
          case 0:
             column = 'left'
             break;

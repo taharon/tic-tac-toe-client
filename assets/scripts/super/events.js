@@ -2,7 +2,9 @@
    const superPlayer = require('./superData.js')
    const superUi = require('./ui.js')
    const gamePlay = require('../game/events.js')
-   const logic = require('./logic.js')
+   const superLogic = require('./logic.js')
+   const api = require('../game/api.js')
+   const ui = require('../game/ui.js')
 
    const instructionsClick = event => {
       event.preventDefault()
@@ -31,6 +33,9 @@
 
    const returnToRegular = event => {
       event.preventDefault()
+      api.getIndex()
+         .then(ui.onGetIndexSucceed)
+         .catch(ui.onGetIndexFail)
       $('.new-game-super').off('submit', superNewGame)
       $('#new-game').on('submit', gamePlay.newGame)
       superUi.onReturnToRegular()
@@ -39,6 +44,7 @@
 //sets new game event handler for super tic tac toe and turns off regular new game event handler
 const superContinue = event => {
    event.preventDefault()
+   $('#total-games').text('No super tic-tac-toe stats.')
    $('#new-game').off('submit', gamePlay.newGame)
    $('.new-game-super').on('submit', superNewGame)
    superUi.onSuperContinue()
@@ -55,7 +61,7 @@ const superContinue = event => {
       $('#message').removeClass()
       $('#message').addClass('success')
       $('#message').text("It is X's turn! Please select a box to start in.")
-      logic.superSetUp()
+      superLogic.superSetUp()
    }
 
    const firstBox = event => {
@@ -78,12 +84,12 @@ const superContinue = event => {
          let whoseTurn = superPlayer.turn%2 === 0 ? 'X' : 'O';
          superPlayer.superBoardState[lastPlayedBox][x][y] = whoseTurn
 //did someone win?
-//         logic.superWinnerUpdate(newBoxCoords)
+//         superLogic.superWinnerUpdate(newBoxCoords)
          superUi.onSuperPlayerClicked(event)
          whoseTurn = superPlayer.turn%2 !== 0 ? 'X' : 'O';
          $('#message').addClass('success')         
          $('#message').text(`It is ${whoseTurn}\'s turn!`)
- //        if(logic.superWinnerWinner()){ return }
+ //        if(superLogic.superWinnerWinner()){ return }
 //if not, continue playing
          superPlayer.turn++
          superPlayer.lastPlay = $(event.target).data().coords
