@@ -70,16 +70,17 @@ const superContinue = event => {
    const superBoxClicked = function (event){
 //gets the coordinates for a 2d array based on the data attribute of the game board divs, the map transforms the string to integer
       let newBoxCoords = $(event.target).data().coords.split(' ').map(str => +str)
-      let currentBoxIndex = superPlayer.lastPlay.split(' ').map(str=>+str)[1]*3 + superPlayer.lastPlay.split(' ').map(str=>+str)[0]
+//superPlayer.lastPlay points to the box the opponent JUST clicked on. This is very important, since all actions of current player depend on previous player
+      let lastPlayedBox = superPlayer.lastPlay.split(' ').map(str=>+str)[1]*3 + superPlayer.lastPlay.split(' ').map(str=>+str)[0]
       let x = newBoxCoords[0]
       let y = newBoxCoords[1]
-      console.log(currentBoxIndex, x, y)
+      console.log(lastPlayedBox, x, y)
       console.log(superPlayer.superBoardState)
 //if the clicked spot is empty, put an X or O in it depending on superPlayer.turn, update the winner array and game board, check if someone won, and if they didn't change superPlayer.turn
-      if (!superPlayer.superBoardState[currentBoxIndex][x][y]){
+      if (!superPlayer.superBoardState[lastPlayedBox][x][y]){
          let whoseTurn = superPlayer.turn%2 === 0 ? 'X' : 'O';
          console.log('whose turn is it', whoseTurn, superPlayer.turn)
-         superPlayer.superBoardState[currentBoxIndex][x][y] = whoseTurn
+         superPlayer.superBoardState[lastPlayedBox][x][y] = whoseTurn
 //did someone win?
 //         logic.superWinnerUpdate(newBoxCoords)
          superUi.onSuperPlayerClicked(event)

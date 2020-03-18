@@ -70,16 +70,23 @@
   // let boxData = `[data-coords=\"${i} ${player.boxSize-i-1}\"]`
    //$(boxData).addClass('winner-color')
 
+   //      let boxCoords = $(event.target).data().coords.split(' ').map(str => +str)
 
    const onSuperPlayerClicked = (event) => {
-      let newBoxCoords = $(event.target).data().coords.split(' ').map(str => +str)
-      let x = newBoxCoords[0]
-      let y = newBoxCoords[1]
+//clickedIndex calculates which box a player JUST clicked on, and converts it into an index 0-8
+      let clickedIndex = $(event.target).data().coords.split(' ').map(str=>+str)[1]*3 + $(event.target).data().coords.split(' ').map(str=>+str)[0]
+//current box coords provides the coordinates for the box that the previous player sent the current player to
+      let currentBoxCoords = superPlayer.lastPlay.split(' ').map(str => +str)
+      let x = currentBoxCoords[0]
+      let y = currentBoxCoords[1]
+//target is the tiny grid in the super box where I need to insert the last player's move
+      let target = `#super-bg-board [data-coords=\"${x} ${y}\"]`
+      console.log($(target).find('.tiny-box'))
       if (superPlayer.turn%2 === 0){
-         $(event.target).text('X')
+         $($(target).find('.tiny-box')[clickedIndex]).text('X')
       }
       else{
-         $(event.target).text('O')
+         $($(target).find('.tiny-box')[clickedIndex]).text('O')
       }
    }
 
