@@ -82,8 +82,13 @@
       let currentBoxCoords = superPlayer.lastPlay.split(' ').map(str => +str)
       let x = currentBoxCoords[0]
       let y = currentBoxCoords[1]
+      let currentX = $(event.target).data().coords.split(' ').map(str=>+str)[0]
+      let currentY = $(event.target).data().coords.split(' ').map(str=>+str)[1]
 //target is the tiny grid in the super box where I need to insert the last player's move
-      let target = `#super-bg-board [data-coords=\"${x} ${y}\"]`
+      let target = `#super-bg-board [data-coords=\"${currentX} ${currentY}\"]`
+      $('#super-bg-board .super-box').removeClass('bg-light')
+      $(target).addClass('bg-light')
+      target = `#super-bg-board [data-coords=\"${x} ${y}\"]`
 //nested jquery selector first finds the parent super box's children, grabbing the correct one with clickedIndex, then actually adds text to the right one
       if (superPlayer.turn%2 === 0){
          $($(target).find('.tiny-box')[clickedIndex]).text('X')
@@ -147,6 +152,61 @@
       $('#message').text(`X picked the ${row} ${column} box. It is X's turn to play.`)
    }
 
+   const onSuperWinnerConfirmed = (boxIndex) =>{
+      let whoseTurn = superPlayer.turn%2
+//selects the box where we have a winner for color coding
+      let boxToColor = $($('#super-bg-board').find('.super-box')[boxIndex])
+      for (let i = 0; i < 9; i++){
+         if (whoseTurn === 0){
+            if (i%2===0){
+               if(!$(boxToColor.find('.tiny-box')[i]).hasClass('xWin') && !$(boxToColor.find('.tiny-box')[i]).hasClass('oWin')){
+                  $(boxToColor.find('.tiny-box')[i]).addClass('xWin')
+               }
+            }
+         }
+         else{
+            if (i!==4){
+               if(!$(boxToColor.find('.tiny-box')[i]).hasClass('xWin') && !$(boxToColor.find('.tiny-box')[i]).hasClass('oWin')){
+                  $(boxToColor.find('.tiny-box')[i]).addClass('oWin')
+               }
+            }
+         }
+      }
+   }
+
+   const onFullWinner = (whichArray) => {
+      let whoseTurn = player.turn%2 === 0 ? 'X' : 'O';
+      $('#message').text(`Player ${whoseTurn} won!`)
+//top left to bottom right diagonal
+      if (whichArray === 0){
+         for(let i = 0; i< player.boxSize; i++){
+            let boxData = `[data-coords=\"${i} ${i}\"]`
+            $(`#super-bg-board ${boxData}`).addClass('winner-color')
+         }
+      }
+//bottom left to top right diagonal
+      else if (whichArray === player.boxSize+1){
+         for(let i = 0; i< player.boxSize; i++){
+            let boxData = `[data-coords=\"${i} ${player.boxSize-i-1}\"]`
+            $(`#super-bg-board ${boxData}`).addClass('winner-color')
+         }
+      }
+//vertical win
+      else if (whichArray < player.boxSize+1){
+         for(let i = 0; i< player.boxSize; i++){
+            let boxData = `[data-coords=\"${whichArray-1} ${i}\"]`
+            $(`#super-bg-board ${boxData}`).addClass('winner-color')
+         }
+      }
+//horizontal win
+      else if (whichArray > player.boxSize+1){
+         for(let i = 0; i< player.boxSize; i++){
+            let boxData = `[data-coords=\"${i} ${whichArray-player.boxSize-2}\"]`
+            $(`#super-bg-board ${boxData}`).addClass('winner-color')
+         }
+      }
+   }
+
    module.exports={
       onInstructionsClick,
       onSuperCancel,
@@ -157,5 +217,7 @@
       onReturnToRegular,
       onSuperPlayerClicked,
       onFirstBox,
-      gameClear
+      gameClear,
+      onSuperWinnerConfirmed,
+      onFullWinner
    }

@@ -30,7 +30,6 @@ const winnerWinner = () => {
    if (weHaveAWinner !== -1){
       $('.game-box').off('click', gamePlay.boxClicked)
       ui.onWinnerConfirmed(weHaveAWinner)
-      return true
    }
 }
 

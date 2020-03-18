@@ -33,6 +33,7 @@
          $(event.target).text('O')
       }
    }
+   
    const onWinnerConfirmed = (whichArray) => {
       let whoseTurn = player.turn%2 === 0 ? 'X' : 'O';
       $('#message').text(`Player ${whoseTurn} won!`)

@@ -54,6 +54,9 @@ const superContinue = event => {
    const superNewGame = event => {
       event.preventDefault()
       $('.super-box').on('click', firstBox)
+      $('#super-bg-board .super-box').removeClass('bg-light')
+      $('#super-bg-board .super-box .tiny-box').removeClass('oWin')
+      $('#super-bg-board .super-box .tiny-box').removeClass('xWin')
 //turn off the event handlers on each game-box when a new game is started (in case someone clicks new game without finishing a game)
       $('.super-reg-box').off('click', superBoxClicked)
       $('.super-reg-box').removeClass('winner-color')     
@@ -83,13 +86,13 @@ const superContinue = event => {
       if (!superPlayer.superBoardState[lastPlayedBox][x][y]){
          let whoseTurn = superPlayer.turn%2 === 0 ? 'X' : 'O';
          superPlayer.superBoardState[lastPlayedBox][x][y] = whoseTurn
-//did someone win?
-//         superLogic.superWinnerUpdate(newBoxCoords)
+//did someone win? (I pass the superWinner array that corresponds to the box the opponent JUST played in)
+         superLogic.superWinnerUpdate(superPlayer.superWinner[lastPlayedBox],newBoxCoords)
          superUi.onSuperPlayerClicked(event)
          whoseTurn = superPlayer.turn%2 !== 0 ? 'X' : 'O';
          $('#message').addClass('success')         
          $('#message').text(`It is ${whoseTurn}\'s turn!`)
- //        if(superLogic.superWinnerWinner()){ return }
+         if(superLogic.superWinnerWinner(superPlayer.superWinner[lastPlayedBox], lastPlayedBox)){ return }
 //if not, continue playing
          superPlayer.turn++
          superPlayer.lastPlay = $(event.target).data().coords
@@ -115,6 +118,9 @@ module.exports = {
 }
 
 
-//When winning a game on reg tic tac toe then going to super, can't return after zooming.
+//Add X & O idea from sheet
+//need a actualWinner function in logic which after a player wins a regular small board checks if anyone won a large board.
 //when returning to a game from super tic tac toe, if the regular game was won and then I left super, it'll currently return
 //     and make the player think the game is still going
+//adding xWin and oWin classes doesn't work right
+//finalWin doesn't work right

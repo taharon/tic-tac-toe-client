@@ -19,7 +19,7 @@
       superPlayer.superWinner = new Array(9)
       for (let i = 0; i < 9; i++){
          superPlayer.superWinner[i] = new Array(8)
-         for (let j = 0; j < 2; j++){
+         for (let j = 0; j < 8; j++){
             superPlayer.superWinner[i][j] = new Array(2).fill(0)
          }
       }
@@ -30,6 +30,51 @@
       }
    }
 
+
+//update the magic square set of vectors
+const superWinnerUpdate = function (winArray, boxCoords) { 
+   //figure out who just took a turn
+         let whoseTurn = superPlayer.turn%2 === 0 ? 0 : 1;
+         let x = boxCoords[0]
+         let y = boxCoords[1]
+         let boxSize = superPlayer.boxSize
+         console.log(winArray)
+   //there are 8 unique row/column/diagonals in a square, so for each I store if player x (superPlayer.winner[vector][0]) or player o (superPlayer.winner[vector][1]) has played in that vector, and then how many times they've played there
+         winArray[x+1][whoseTurn]++
+         winArray[y+boxSize+2][whoseTurn]++
+         if (x===y){
+            winArray[0][whoseTurn]++
+         }
+         if(x+y + 1 === superPlayer.boxSize){
+            winArray[boxSize+1][whoseTurn]++
+         }
+      }
+
+//checks if someone won on the small 3x3 board, marks it, and then if there is a win updates/checks on the large 3x3
+const superWinnerWinner = (playArray, boxIndex) => {
+   let lastPlayedCoords = superPlayer.lastPlay.split(' ').map(str=>+str)
+   //the inside findIndex checks to see if anyone has more than 3 in a magic square vector. The second one tells me in which row/column/diagonal the player actually won
+   let weHaveAWinner = playArray.findIndex(squareVectors => squareVectors.findIndex(playerValues => playerValues === 3) !== -1) 
+   if (weHaveAWinner !== -1){
+      superUi.onSuperWinnerConfirmed(boxIndex)
+      superWinnerUpdate(superPlayer.actualWinner, lastPlayedCoords)
+   }
+   else{
+      return
+   }
+//also need to check if winner in the super box, then turn off click and do stuff when that winner is found
+   let superWeHaveAWinner = superPlayer.actualWinner.findIndex(squareVectors => squareVectors.findIndex(playerValues => playerValues === 3) !== -1)
+   console.log('in omega winner')
+   if(superWeHaveAWinner !== -1){
+      superUi.onFullWinner(superWeHaveAWinner)
+   }
+   else{
+      return
+   }
+}
+
 module.exports = {
-   superSetUp
+   superSetUp,
+   superWinnerWinner,
+   superWinnerUpdate
 }
