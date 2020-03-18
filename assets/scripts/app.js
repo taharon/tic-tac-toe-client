@@ -8,8 +8,10 @@
 
 const store = require('./store.js')
 const gamePlay = require('./game/events.js')
+const superGamePlay = require('./super/events.js')
 const userCreate = require('./auth/events.js')
 const superGame = require('./super/events.js')
+const superUi = require('./super/ui.js')
 //if user doesn't currently exist, don't show change password or sign-out
 if (!store.user){
    $('#change-pw').attr('hidden','hidden')
@@ -51,5 +53,5 @@ $(() => {
    $('#super-bg-zoom').on('click', superGame.superBigZoom)
    $('#super-return').on('click', superGame.returnToGame)
    $('#return-reg').on('click', superGame.returnToRegular)
-   $('.super-box').on('click', superGame.firstBox)
+
 })

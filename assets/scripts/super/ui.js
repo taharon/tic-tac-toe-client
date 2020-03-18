@@ -75,7 +75,7 @@
       let newBoxCoords = $(event.target).data().coords.split(' ').map(str => +str)
       let x = newBoxCoords[0]
       let y = newBoxCoords[1]
-      if (player.turn%2 === 0){
+      if (superPlayer.turn%2 === 0){
          $(event.target).text('X')
       }
       else{
@@ -128,5 +128,6 @@
       onSuperContinue,
       onReturnToGame,
       onReturnToRegular,
+      onSuperPlayerClicked,
       onFirstBox
    }
