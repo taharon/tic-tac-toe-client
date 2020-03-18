@@ -52,6 +52,3 @@ Add multiplayer capabilities
 Allow users to load unfinished games  
 Add game logic for super tic-tac-toe  
 Add better instructions for how to play super tic-tac-toe  
-
-[reg-wireframe]: 
-[super-wireframe]: ./public/images/Super_TTT_wireframe.jpg
