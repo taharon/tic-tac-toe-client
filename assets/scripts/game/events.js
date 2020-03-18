@@ -6,6 +6,7 @@
 
    const newGame = function (event) {
       event.preventDefault()
+      console.log('reg new game')
 //turn off the event handlers on each game-box when a new game is started (in case someone clicks new game without finishing a game)
       $('.game-box').off('click', boxClicked)
       $('.game-box').removeClass('winner-color')

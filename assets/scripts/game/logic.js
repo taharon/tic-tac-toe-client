@@ -1,9 +1,7 @@
 'use strict'
    const player = require('./gameData.js')
    const gamePlay = require('./events.js')
-   const eventHandler = require('../app.js')
    const ui = require('./ui')
-   const api = require('./api')
 
    const setUp = function (gameData){
 //default to x going first
