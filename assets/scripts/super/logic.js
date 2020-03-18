@@ -1,14 +1,12 @@
 'use strict'
    const superPlayer = require('./superData.js')
    const gamePlay = require('./events.js')
-   const ui = require('./ui')
+   const superUi = require('./ui')
 
    const superSetUp = function (){
 //default to x going first
       superPlayer.turn = 0
-//on new game the board should be empty
-      $('html #super-sm-board .super-reg-box').text('')
-      $('html #super-bg-board .tiny-box').text('')
+      superUi.gameClear()
 //initialize my 3d representation of the board (9 2d arrays, one for each board in the super grid)
       superPlayer.superBoardState = new Array(9).fill('')
       for (let i = 0; i < 9; i++){

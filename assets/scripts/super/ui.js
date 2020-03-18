@@ -81,13 +81,30 @@
       let y = currentBoxCoords[1]
 //target is the tiny grid in the super box where I need to insert the last player's move
       let target = `#super-bg-board [data-coords=\"${x} ${y}\"]`
-      console.log($(target).find('.tiny-box'))
+//nested jquery selector first finds the parent super box's children, grabbing the correct one with clickedIndex, then actually adds text to the right one
       if (superPlayer.turn%2 === 0){
          $($(target).find('.tiny-box')[clickedIndex]).text('X')
+         $(event.target).text('O')
       }
       else{
          $($(target).find('.tiny-box')[clickedIndex]).text('O')
+         $(event.target).text('O')
       }
+//clear the board and load in the x's and o's for the board to which the player was just sent by their opponent
+      $('html #super-sm-board .super-reg-box').text('')
+      let tmpBoard = superPlayer.superBoardState[clickedIndex]
+      for (let i = 0; i < 3; i++){
+         for (let j = 0; j <3; j++){
+            target = `#super-sm-board [data-coords=\"${i} ${j}\"]`
+            $(target).text(tmpBoard[i][j])
+         }
+      }
+   }
+
+   const gameClear = () => {
+      //on new game the board should be empty
+      $('html #super-sm-board .super-reg-box').text('')
+      $('html #super-bg-board .tiny-box').text('')
    }
 
    const onFirstBox = () => {
@@ -136,5 +153,6 @@
       onReturnToGame,
       onReturnToRegular,
       onSuperPlayerClicked,
-      onFirstBox
+      onFirstBox,
+      gameClear
    }
