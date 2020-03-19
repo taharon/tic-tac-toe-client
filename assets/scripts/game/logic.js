@@ -26,7 +26,7 @@
 //check if someone won
 const winnerWinner = () => {
 //the inside findIndex checks to see if anyone has more than 3 in a magic square vector. The second one tells me in which row/column/diagonal the player actually won
-   let weHaveAWinner = player.winner.findIndex(squareVectors => squareVectors.findIndex(playerValues => playerValues === 3) !== -1) 
+   let weHaveAWinner = player.winner.findIndex(squareVectors => squareVectors[player.turn%2] === 3)
    if (weHaveAWinner !== -1){
       $('.game-box').off('click', gamePlay.boxClicked)
       ui.onWinnerConfirmed(weHaveAWinner)
