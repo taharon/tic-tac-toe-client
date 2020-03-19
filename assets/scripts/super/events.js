@@ -53,10 +53,12 @@ const superContinue = event => {
 //split this up, move half to app file, rest into UI function
    const superNewGame = event => {
       event.preventDefault()
+      superUi.onReturnToGame()
       $('.super-box').on('click', firstBox)
       $('#super-bg-board .super-box').removeClass('bg-light')
       $('#super-bg-board .super-box .tiny-box').removeClass('oWin')
       $('#super-bg-board .super-box .tiny-box').removeClass('xWin')
+      $('#super-bg-board .super-box').removeClass('winner-color')
 //turn off the event handlers on each game-box when a new game is started (in case someone clicks new game without finishing a game)
       $('.super-reg-box').off('click', superBoxClicked)
       $('.super-reg-box').removeClass('winner-color')     
@@ -86,14 +88,15 @@ const superContinue = event => {
       if (!superPlayer.superBoardState[lastPlayedBox][x][y]){
          let whoseTurn = superPlayer.turn%2 === 0 ? 'X' : 'O';
          superPlayer.superBoardState[lastPlayedBox][x][y] = whoseTurn
-//did someone win? (I pass the superWinner array that corresponds to the box the opponent JUST played in)
+//update the array that is used to check if someone won
          superLogic.superWinnerUpdate(superPlayer.superWinner[lastPlayedBox],newBoxCoords)
+//actually check if someone won         
+         if(superLogic.superWinnerWinner(superPlayer.superWinner[lastPlayedBox], lastPlayedBox)){ return }
+//if not, continue playing
          superUi.onSuperPlayerClicked(event)
          whoseTurn = superPlayer.turn%2 !== 0 ? 'X' : 'O';
          $('#message').addClass('success')         
          $('#message').text(`It is ${whoseTurn}\'s turn!`)
-         if(superLogic.superWinnerWinner(superPlayer.superWinner[lastPlayedBox], lastPlayedBox)){ return }
-//if not, continue playing
          superPlayer.turn++
          superPlayer.lastPlay = $(event.target).data().coords
       }
