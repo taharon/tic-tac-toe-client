@@ -1,17 +1,17 @@
 # Tal's Tic-Tac-Toe
 
 ## Tech
-JavaScript
-jQuery
-AJAX
-Git
-Github
-Grunt
-Bootstrap
-Sass
-HTML
-CSS
-Visual Studio Code (to develop)
+JavaScript  
+jQuery  
+AJAX  
+Git  
+Github  
+Grunt  
+Bootstrap  
+Sass  
+HTML  
+CSS  
+Visual Studio Code (to develop)  
 
 ## Wireframes
 I began with mockups of both the regular tic-tac-toe client as well as the super tic-tac-toe client. I knew that I would need login and signup buttons, a landing page for the user where they can start a new game, and the ability to log out and change password.
