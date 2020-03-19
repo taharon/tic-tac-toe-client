@@ -70,11 +70,6 @@
       }
    }
 
-  // let boxData = `[data-coords=\"${i} ${player.boxSize-i-1}\"]`
-   //$(boxData).addClass('winner-color')
-
-   //      let boxCoords = $(event.target).data().coords.split(' ').map(str => +str)
-
    const onSuperPlayerClicked = (event) => {
 //clickedIndex calculates which box a player JUST clicked on, and converts it into an index 0-8
       let clickedIndex = $(event.target).data().coords.split(' ').map(str=>+str)[1]*3 + $(event.target).data().coords.split(' ').map(str=>+str)[0]
@@ -173,40 +168,41 @@
    }
 
    const onFullWinner = (whichArray) => {
-      let whoseTurn = player.turn%2 === 0 ? 'X' : 'O';
+      let whoseTurn = (superPlayer.turn)%2 === 0 ? 'X' : 'O';
       $('#message').removeClass()
       $('#message').addClass('success')
-      $('#message').text(`Player ${whoseTurn} won!`)
+      $('#message').text(`Player ${whoseTurn} won! Click new game to play again!`)
       $('#super-bg-board .super-box').removeClass('bg-light')
 //top left to bottom right diagonal
       if (whichArray === 0){
-         for(let i = 0; i< player.boxSize; i++){
+         for(let i = 0; i< superPlayer.boxSize; i++){
             let boxData = `[data-coords=\"${i} ${i}\"]`
             $(`#super-bg-board ${boxData}`).addClass('winner-color')
          }
       }
 //bottom left to top right diagonal
-      else if (whichArray === player.boxSize+1){
-         for(let i = 0; i< player.boxSize; i++){
-            let boxData = `[data-coords=\"${i} ${player.boxSize-i-1}\"]`
+      else if (whichArray === superPlayer.boxSize+1){
+         for(let i = 0; i< superPlayer.boxSize; i++){
+            let boxData = `[data-coords=\"${i} ${superPlayer.boxSize-i-1}\"]`
             $(`#super-bg-board ${boxData}`).addClass('winner-color')
          }
       }
 //vertical win
-      else if (whichArray < player.boxSize+1){
-         for(let i = 0; i< player.boxSize; i++){
+      else if (whichArray < superPlayer.boxSize+1){
+         for(let i = 0; i< superPlayer.boxSize; i++){
             let boxData = `[data-coords=\"${whichArray-1} ${i}\"]`
             $(`#super-bg-board ${boxData}`).addClass('winner-color')
          }
       }
 //horizontal win
-      else if (whichArray > player.boxSize+1){
-         for(let i = 0; i< player.boxSize; i++){
-            let boxData = `[data-coords=\"${i} ${whichArray-player.boxSize-2}\"]`
+      else if (whichArray > superPlayer.boxSize+1){
+         for(let i = 0; i< superPlayer.boxSize; i++){
+            let boxData = `[data-coords=\"${i} ${whichArray-superPlayer.boxSize-2}\"]`
             $(`#super-bg-board ${boxData}`).addClass('winner-color')
          }
       }
       onSuperBigZoom()
+      $('#super-return').attr('hidden','hidden') 
    }
 
    module.exports={

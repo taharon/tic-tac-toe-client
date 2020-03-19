@@ -90,10 +90,11 @@ const superContinue = event => {
          superPlayer.superBoardState[lastPlayedBox][x][y] = whoseTurn
 //update the array that is used to check if someone won
          superLogic.superWinnerUpdate(superPlayer.superWinner[lastPlayedBox],newBoxCoords)
+//update board with click
+         superUi.onSuperPlayerClicked(event)
 //actually check if someone won         
          if(superLogic.superWinnerWinner(superPlayer.superWinner[lastPlayedBox], lastPlayedBox)){ return }
 //if not, continue playing
-         superUi.onSuperPlayerClicked(event)
          whoseTurn = superPlayer.turn%2 !== 0 ? 'X' : 'O';
          $('#message').addClass('success')         
          $('#message').text(`It is ${whoseTurn}\'s turn!`)
@@ -120,7 +121,7 @@ module.exports = {
    superBoxClicked
 }
 
-//The below changes need to happen to #message
+//The below changes need to happen to #message, can be done using if(typeof $('.super-box').on === "function"){console.log('it worked!')}
 //when returning to a game from super tic tac toe, if the regular game was won and then I left super, it'll currently return
 //     and make the player think the game is still going
 //when entering super tic-tac-toe from regular, should check if game is in progress or needs to be started
