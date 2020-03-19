@@ -120,10 +120,7 @@ module.exports = {
    superBoxClicked
 }
 
-
-//Add X & O idea from sheet
-//need a actualWinner function in logic which after a player wins a regular small board checks if anyone won a large board.
+//The below changes need to happen to #message
 //when returning to a game from super tic tac toe, if the regular game was won and then I left super, it'll currently return
 //     and make the player think the game is still going
-//adding xWin and oWin classes doesn't work right
-//finalWin doesn't work right
+//when entering super tic-tac-toe from regular, should check if game is in progress or needs to be started
