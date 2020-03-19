@@ -34,6 +34,7 @@
 //update the magic square set of vectors
 const superWinnerUpdate = function (winArray, boxCoords) { 
    //figure out who just took a turn
+      if(winArray !== 0){
          let whoseTurn = superPlayer.turn%2 === 0 ? 0 : 1;
          let x = boxCoords[0]
          let y = boxCoords[1]
@@ -52,28 +53,37 @@ const superWinnerUpdate = function (winArray, boxCoords) {
             }
          }
       }
+   }
 
 //checks if someone won on the small 3x3 board, marks it, and then if there is a win updates/checks on the large 3x3
 const superWinnerWinner = (playArray, boxIndex) => {
-   let lastPlayedCoords = superPlayer.lastPlay.split(' ').map(str=>+str)
-   //the inside findIndex checks to see if anyone has more than 3 in a magic square vector. The second one tells me in which row/column/diagonal the player actually won
-   let weHaveAWinner = playArray.findIndex(squareVectors => squareVectors[(superPlayer.turn)%2] === 3)
-   if (weHaveAWinner !== -1){
-      superUi.onSuperWinnerConfirmed(boxIndex)
-      superWinnerUpdate(superPlayer.actualWinner, lastPlayedCoords)
-   }
-   else{
-      return
-   }
+//   console.log('playArray', playArray)
+   if (playArray !== 0){
+      let lastPlayedCoords = superPlayer.lastPlay.split(' ').map(str=>+str)
+      let weHaveAWinner = playArray.findIndex(squareVectors => squareVectors[(superPlayer.turn)%2] === 3)
+//did the player who just clicked win a square?
+//      console.log('weHaveAWinner', weHaveAWinner)
+      if (weHaveAWinner !== -1){
+         superUi.onSuperWinnerConfirmed(boxIndex)
+         superWinnerUpdate(superPlayer.actualWinner, lastPlayedCoords)
+//         console.log('we have minor winner')
+         superPlayer.superWinner[lastPlayedCoords[1]*3+lastPlayedCoords[0]] = 0
+      }
+      else{
+//         console.log('no minor winner')
+         return
+      }
 //also need to check if winner in the super box, then turn off click and do stuff when that winner is found
-   let superWeHaveAWinner = superPlayer.actualWinner.findIndex(squareVectors => squareVectors[superPlayer.turn%2] === 3)
-   if(superWeHaveAWinner !== -1){
-      superUi.onFullWinner(superWeHaveAWinner)
-      $('.super-reg-box').off('click', gamePlay.superBoxClicked)
-      return true
-   }
-   else{
-      return
+      let superWeHaveAWinner = superPlayer.actualWinner.findIndex(squareVectors => squareVectors[superPlayer.turn%2] === 3)
+//      console.log('actual winner array', superPlayer.actualWinner)
+      if(superWeHaveAWinner !== -1){
+         superUi.onFullWinner(superWeHaveAWinner)
+         $('.super-reg-box').off('click', gamePlay.superBoxClicked)
+         return true
+      }
+      else{
+         return
+      }
    }
 }
 
