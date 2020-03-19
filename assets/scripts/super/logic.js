@@ -38,7 +38,6 @@ const superWinnerUpdate = function (winArray, boxCoords) {
          let x = boxCoords[0]
          let y = boxCoords[1]
          let boxSize = superPlayer.boxSize
-         console.log(winArray)
    //has anyone won yet in this box?
          let finishedBox = winArray.findIndex(squareVectors => squareVectors.findIndex(playerValues => playerValues === 3) !== -1)
    //there are 8 unique row/column/diagonals in a square, so for each I store if player x (superPlayer.winner[vector][0]) or player o (superPlayer.winner[vector][1]) has played in that vector, and then how many times they've played there
@@ -59,19 +58,15 @@ const superWinnerWinner = (playArray, boxIndex) => {
    let lastPlayedCoords = superPlayer.lastPlay.split(' ').map(str=>+str)
    //the inside findIndex checks to see if anyone has more than 3 in a magic square vector. The second one tells me in which row/column/diagonal the player actually won
    let weHaveAWinner = playArray.findIndex(squareVectors => squareVectors[(superPlayer.turn)%2] === 3)
-   console.log(weHaveAWinner)
    if (weHaveAWinner !== -1){
       superUi.onSuperWinnerConfirmed(boxIndex)
       superWinnerUpdate(superPlayer.actualWinner, lastPlayedCoords)
-      console.log('we have minor winner')
    }
    else{
-      console.log('no minor winner')
       return
    }
 //also need to check if winner in the super box, then turn off click and do stuff when that winner is found
    let superWeHaveAWinner = superPlayer.actualWinner.findIndex(squareVectors => squareVectors[superPlayer.turn%2] === 3)
-   console.log('actual winner array', superPlayer.actualWinner)
    if(superWeHaveAWinner !== -1){
       superUi.onFullWinner(superWeHaveAWinner)
       $('.super-reg-box').off('click', gamePlay.superBoxClicked)
