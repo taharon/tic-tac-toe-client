@@ -68,6 +68,7 @@ const superWinnerWinner = (playArray, boxIndex) => {
          superWinnerUpdate(superPlayer.actualWinner, lastPlayedCoords)
 //         console.log('we have minor winner')
          superPlayer.superWinner[lastPlayedCoords[1]*3+lastPlayedCoords[0]] = 0
+//         playArray = 0
       }
       else{
 //         console.log('no minor winner')

@@ -125,3 +125,7 @@ module.exports = {
 //when returning to a game from super tic tac toe, if the regular game was won and then I left super, it'll currently return
 //     and make the player think the game is still going
 //when entering super tic-tac-toe from regular, should check if game is in progress or needs to be started
+//maybe a you are here thing for the white box
+//     outline the box maybe using chris's link
+//send game board arrays as the 9 elements of the api's game board? use stringify to convert to game board
+//patch would have to send the entire game board
