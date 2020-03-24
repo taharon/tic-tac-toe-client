@@ -30,7 +30,12 @@
       $('#super-game').removeAttr('hidden','hidden')
       $('#message').removeClass()
       $('#message').addClass('success')
-      $('#message').text('Please click New Game to begin.')
+      if (!superPlayer.message) {
+         $('#message').text('Please click New Game to begin.')
+      }
+      else{
+         $('#message').text(superPlayer.message)
+      }
    }
 
    const onSuperBigZoom = () =>{
@@ -41,7 +46,7 @@
       $('#super-return').removeAttr('hidden')    
    }
 
-   const onReturnToGame = () => {
+   const onZoomOut = () => {
       $('#super-bg-board').removeAttr('hidden')
       $('#super-sm-board').removeAttr('hidden')
       $('#super-bg-board').removeClass('col-12')
@@ -59,7 +64,7 @@
          let who = player.turn%2===0 ? 'X' : 'O'
          $('#message').removeClass()
          $('#message').addClass('success')
-         $('#message').text(`Welcome back to your game. It is player ${who}'s turn.`)
+         $('#message').text(`Welcome back to your game. ${player.message}`)
       }
       else{
          $('#super-game').attr('hidden','hidden')
@@ -116,6 +121,7 @@
       let y = startCoords[1]
       if ((y===x)&&(y===1)){
          $('#message').removeClass()
+         $('#message').addClass('success')
          $('#message').text("X picked the middle box. It is X's turn to play.")
          return
       }
@@ -144,6 +150,7 @@
             break;
       }
       $('#message').removeClass()
+      $('#message').addClass('success')
       $('#message').text(`X picked the ${row} ${column} box. It is X's turn to play.`)
    }
 
@@ -211,7 +218,7 @@
       onSuperSmallZoom,
       onSuperBigZoom,
       onSuperContinue,
-      onReturnToGame,
+      onZoomOut,
       onReturnToRegular,
       onSuperPlayerClicked,
       onFirstBox,

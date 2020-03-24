@@ -3,5 +3,6 @@ module.exports ={
  boardState: [],
  winner: [],
  gameId: 0,
- boxSize: 3
+ boxSize: 3,
+ message: ''
 }

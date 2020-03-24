@@ -41,7 +41,7 @@
          api.sendMove(whoseTurn, (y*3+x))
          whoseTurn = player.turn%2 !== 0 ? 'X' : 'O';
          $('#message').addClass('success')         
-         $('#message').text(`It is ${whoseTurn}\'s turn!`)
+         $('#message').text(`It is player ${whoseTurn}\'s turn!`)
          if(logic.winnerWinner()){ return }
 //if not, change player turn
          player.turn++

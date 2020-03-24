@@ -4,6 +4,7 @@ module.exports ={
    superWinner: [],
    actualWinner: [],
    lastPlay: 0,
-   boxSize: 3
+   boxSize: 3,
+   message: ''
   }
   

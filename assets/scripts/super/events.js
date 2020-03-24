@@ -1,5 +1,6 @@
 'use strict'
    const superPlayer = require('./superData.js')
+   const player = require('../game/gameData.js')
    const superUi = require('./ui.js')
    const gamePlay = require('../game/events.js')
    const superLogic = require('./logic.js')
@@ -8,6 +9,7 @@
 
    const instructionsClick = event => {
       event.preventDefault()
+      player.message = $('#message').text()
       superUi.onInstructionsClick()
    }
 
@@ -28,11 +30,12 @@
 
    const returnToGame = event => {
       event.preventDefault()
-      superUi.onReturnToGame()
+      superUi.onZoomOut()
    }
 
    const returnToRegular = event => {
       event.preventDefault()
+      superPlayer.message = $('#message').text()
       api.getIndex()
          .then(ui.onGetIndexSucceed)
          .catch(ui.onGetIndexFail)
@@ -53,7 +56,7 @@ const superContinue = event => {
 //split this up, move half to app file, rest into UI function
    const superNewGame = event => {
       event.preventDefault()
-      superUi.onReturnToGame()
+      superUi.onZoomOut()
       $('.super-box').on('click', firstBox)
       $('#super-bg-board .super-box').removeClass('bg-light')
       $('#super-bg-board .super-box .tiny-box').removeClass('oWin')
@@ -63,6 +66,7 @@ const superContinue = event => {
       $('.super-reg-box').off('click', superBoxClicked)
       $('.super-reg-box').removeClass('winner-color')     
 ////start a game
+      api.createGame()
       $('#message').removeClass()
       $('#message').addClass('success')
       $('#message').text("Player X begins. Please select a box to start in.")
@@ -97,7 +101,7 @@ const superContinue = event => {
 //if not, continue playing
          whoseTurn = superPlayer.turn%2 !== 0 ? 'X' : 'O';
          $('#message').addClass('success')         
-         $('#message').text(`It is ${whoseTurn}\'s turn!`)
+         $('#message').text(`It is player ${whoseTurn}\'s turn!`)
          superPlayer.turn++
          superPlayer.lastPlay = $(event.target).data().coords
       }
@@ -121,9 +125,9 @@ module.exports = {
    superBoxClicked
 }
 
-//The below changes need to happen to #message, can be done using if(typeof $('.super-box').on === "function"){console.log('it worked!')}
-//when returning to a game from super tic tac toe, if the regular game was won and then I left super, it'll currently return
-//     and make the player think the game is still going
+//just steal the api functions from the regular game
+
+//don't need to make 9 api calls per game, since storing all subgames in regular array
 //when entering super tic-tac-toe from regular, should check if game is in progress or needs to be started
 //maybe a you are here thing for the white box
 //     outline the box maybe using chris's link
