@@ -66,7 +66,7 @@ const superContinue = event => {
       $('.super-reg-box').off('click', superBoxClicked)
       $('.super-reg-box').removeClass('winner-color')     
 ////start a game
-      api.createGame()
+//      api.createGame()
       $('#message').removeClass()
       $('#message').addClass('success')
       $('#message').text("Player X begins. Please select a box to start in.")
