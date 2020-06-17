@@ -1,0 +1,382 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+      <title>Tal's Tic-Tac-Toe!</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta property="og:title" content="Tic-Tac-Toe" />
+      <meta property="og:url" content="https://taharon.github.io/tic-tac-toe-client/" />
+      <meta property="og:image" content="https://i.imgur.com/rCbCcCs.png" />
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+   </head>
+   <body>
+      <nav class="navbar-expand">
+         <div class="collapse navbar-collapse nav-color">
+            <div id='test' class="container">
+               <div class="row">
+                  <div class="title col-12 box nav-color border-0">Tic-Tac-Toe</div>
+               </div>
+               <div class="row">
+                  <div class="col-6 box nav-color border-0">
+                     <form class='container' id='sign-up'>
+                           <div class="extra-row row">
+                              <input class='nav-font col-4' type='text' name='credentials[email]' placeholder='Email'></input>
+                              <input class='nav-font col-4' type='password' name='credentials[password]' placeholder='Password'></input>
+                              <input class='nav-font col-4' type='password' name='credentials[password_confirmation]' placeholder='Confirm Password'></input>
+                           </div>
+                           <div class="extra-row row mt-3">
+                              <div class='nav-font col-2 nav-color'></div>
+                              <input class='border border-dark nav-font col-8 rounded-pill' type='submit' value="Sign Up"></input>
+                              <div class='nav-font col-2 nav-color'></div>
+                           </div>
+                     </form>
+                     <div class="container hide-user" hidden='hidden'>
+                        <!--Username-->
+                        <div style='margin: -15px 0 0 0' class="row extra-row hide-user" hidden="hidden">
+                           <div class="nav-font col-2 nav-color"></div>
+                           <div class="username nav-color col-8"></div>
+                           <div class="nav-font col-2 nav-color"></div>
+                        </div>
+                        <!--Stats-->
+                        <div class="row extra-row mt-3 nav-font hide-user" hidden="hidden">
+                           <div class="col-1 nav-color"></div>
+                           <div hidden='hidden' class='col-4' id='total-games'></div>
+                           <div class="col-2 nav-color"></div>
+                        <!--New Game-->
+                           <form hidden='hidden' class='col-4 new-game-super' id='new-game'>
+                                 <input type='submit' class='full border border-dark rounded-pill' value="New Game"></input>
+                           </form>
+                           <div class="col-1 nav-color"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <!--Spacing for second half of nav-->
+                  <div class="col-2 box nav-color border-0"></div>
+                  <div class="col-4 box nav-color border-0">
+                     <!--Sign in stuff-->
+                     <form id='sign-in'>
+                           <div class="extra-row row">
+                              <input class='nav-font col-6' type='text' name='credentials[email]' placeholder='Email'></input>
+                              <input class='nav-font col-6' type='password' name='credentials[password]' placeholder='Password'></input>
+                           </div>
+                           <div class="extra-row row mt-3">
+                              <div class='nav-font col-2 nav-color'></div>
+                              <input class='border border-dark nav-font col-8 rounded-pill' type='submit' value="Log In"></input>
+                              <div class='nav-font col-2 nav-color'></div>
+                           </div>
+                     </form>
+                     <!--Sign out, Show change pw-->
+                     <form id='pass-logout' class='full' hidden='hidden'>
+                        <div class="row extra-row">
+                           <button type='button' id='sign-out' class='col-12 border border-dark nav-font rounded-pill'>Sign Out</button>
+                        </div>
+                        <div class="row mt-3 extra-row">
+                           <button type='button' id='pass-change-show' class='border border-dark nav-font col-12 rounded-pill'>Change Password</button>
+                        </div>
+                     </form>
+                     <!--Actual change password-->
+                     <form id='change-pw' hidden='hidden'>
+                        <div class="extra-row row">
+                           <input class='nav-font col-6' type='password' id='old-pw' placeholder='Old Password'></input>
+                           <input class='nav-font col-6' type='password' id='new-pw' placeholder='New Password'></input>
+                        </div>
+                        <div class="extra-row row mt-3">
+                           <input  id='change-pw-button' class='border border-dark nav-font col-6 rounded-pill' type='submit' value="Submit"></input>
+                           <button id='cancel-change-pw' class='border border-dark nav-font col-6 rounded-pill'>Cancel</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+          </div>
+       </nav>
+      <main>
+         <h2 style='text-align: center' id='message'>Welcome! Please log in to play Tic-Tac-Toe.</h2>
+<!--the game board begins here-->
+         <div id='reg-game'>
+         <!--
+            <div id='reg-game' hidden='hidden'>
+            -->
+            <div hidden='hidden' id='game-board' class="container">
+               <div class="row">
+                  <div data-coords="0 0" class="col-4 game-box border-top-0 border-left-0"></div>
+                  <div data-coords="1 0" class="col-4 game-box border-top-0"></div>
+                  <div data-coords="2 0" class="col-4 game-box border-top-0 border-right-0"></div>
+               </div>
+               <div class="row">
+                  <div data-coords="0 1" class="col-4 game-box border-left-0"></div>
+                  <div data-coords="1 1" class="col-4 game-box"></div>
+                  <div data-coords="2 1" class="col-4 game-box border-right-0"></div>
+               </div>
+               <div class="row">
+                  <div data-coords="0 2" class="col-4 game-box border-bottom-0 border-left-0"></div>
+                  <div data-coords="1 2" class="col-4 game-box border-bottom-0"></div>
+                  <div data-coords="2 2" class="col-4 game-box border-bottom-0 border-right-0"></div>
+               </div>
+            </div>
+            <div id='demo-board' class="container">
+               <div class="row">
+                  <div class="col-4 demo-box border-top-0 border-left-0">X</div>
+                  <div class="col-4 demo-box border-top-0">O</div>
+                  <div class="col-4 demo-box border-top-0 border-right-0 winner-color">X</div>
+               </div>
+               <div class="row">
+                  <div class="col-4 demo-box border-left-0">O</div>
+                  <div class="col-4 demo-box">O</div>
+                  <div class="col-4 demo-box border-right-0 winner-color">X</div>
+               </div>
+               <div class="row">
+                  <div class="col-4 border-bottom-0 demo-box border-left-0"></div>
+                  <div class="col-4 border-bottom-0 demo-box"></div>
+                  <div class="col-4 border-bottom-0 demo-box border-right-0 winner-color">X</div>
+               </div>
+            </div>
+            <div hidden='hidden' id='super-s' class="container">
+               <div class="row">
+                  <div class="col-2"></div>
+                  <button id='super-start' class='buttonSize col-8 border border-dark nav-font rounded-pill'>SUPER</button>
+                  <div class="col-2"></div>
+               </div>
+            </div>
+         </div>
+         <div hidden='hidden' class="container" id='super-inst'>
+            <div>Super tic-tac-toe is played in a 3x3 grid of grids. Each player makes a move in a normal tic-tac-toe grid, however their move will send their opponent to the corresponding game on the 3 x 3 board. For example, if a player chooses to place an X in the middle square of the top-left grid, the next player must place an O in the tic-tac-toe grid in the center of the 3 x 3 super-grid.</div>
+            <div class="row">
+               <button id='super-cont' class='buttonSize col-6 border border-dark nav-font rounded-pill'>I understand, let's play!</button>
+               <button id='super-cancel' class='buttonSize col-6 border border-dark nav-font rounded-pill'>No thanks, I'm out.</button>
+            </div>
+         </div>
+         <!--Super game starts here-->
+         <!--Zoom for super game-->
+         <div id="super-game" hidden='hidden'>
+         <!--<div id="super-game" >-->
+            <div class="container" id='super-zoom'>
+               <div class="row">
+                  <button id='super-sm-zoom' class='buttonSize col-5 border border-dark nav-font rounded-pill'>Zoom in on current board.</button>
+                  <div class="col-2"></div>
+                  <button id='super-bg-zoom' class='buttonSize col-5 border border-dark nav-font rounded-pill'>Zoom in on full board.</button>
+               </div>
+            </div>
+            <!--Return to super game-->
+            <div class="container" hidden='hidden' id='super-return'>
+               <div class="row">
+                  <div class="col-2"></div>
+                  <button class='buttonSize col-8 border border-dark nav-font rounded-pill'>Return to game</button>
+                  <div class="col-2"></div>
+               </div>
+            </div> </br>
+            <!--Super Game Board-->
+            <div class="container" style='max-width: 1300px;'>
+               <div class="row">
+                  <div id='super-sm-board' class="col-4">
+                     <div class="row">
+                        <div data-coords="0 0" class="col-4 super-reg-box border-top-0 border-left-0"></div>
+                        <div data-coords="1 0" class="col-4 super-reg-box border-top-0"></div>
+                        <div data-coords="2 0" class="col-4 super-reg-box border-top-0 border-right-0"></div>
+                     </div>
+                     <div class="row">
+                        <div data-coords="0 1" class="col-4 super-reg-box border-left-0"></div>
+                        <div data-coords="1 1" class="col-4 super-reg-box"></div>
+                        <div data-coords="2 1" class="col-4 super-reg-box border-right-0"></div>
+                     </div>
+                     <div class="row">
+                        <div data-coords="0 2" class="col-4 super-reg-box border-bottom-0 border-left-0"></div>
+                        <div data-coords="1 2" class="col-4 super-reg-box border-bottom-0"></div>
+                        <div data-coords="2 2" class="col-4 super-reg-box border-bottom-0 border-right-0"></div>
+                     </div>
+                  </div>
+                  <div class="col-1"></div>
+                  <div id='super-bg-board' class="col-7">
+                     <div class="row">
+                        <div data-coords="0 0" class="col-4 super-box border-top-0 border-left-0">                  
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div data-coords="1 0" class="col-4 super-box border-top-0">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div data-coords="2 0" class="col-4 super-box border-top-0 border-right-0">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div data-coords="0 1" class="col-4 super-box border-left-0">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div data-coords="1 1" class="col-4 super-box">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div data-coords="2 1" class="col-4 super-box border-right-0">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div data-coords="0 2" class="col-4 super-box border-bottom-0 border-left-0">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div data-coords="1 2" class="col-4 super-box border-bottom-0">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div data-coords="2 2" class="col-4 super-box border-bottom-0 border-right-0">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-top-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-top-0"></div>
+                                 <div class="col-4 tiny-box border-top-0 border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-left-0"></div>
+                                 <div class="col-4 tiny-box"></div>
+                                 <div class="col-4 tiny-box border-right-0"></div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-4 tiny-box border-bottom-0 border-left-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0"></div>
+                                 <div class="col-4 tiny-box border-bottom-0 border-right-0"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-3"></div>
+                  <button id='return-reg' class='buttonSize col-6 border border-dark nav-font rounded-pill'>Return to regular Tic-Tac-Toe</button>
+                  <div class="col-3"></div>
+               </div>
+            </div>
+         </div>
+      </main>
+   </body>
+</html>
